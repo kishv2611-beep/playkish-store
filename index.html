@@ -1,451 +1,1878 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>PLAYKISH — Built To Perform</title>
+<title>PLAYKISH | Performance Sportswear</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #080808;
-      color: #fff;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    header {
-      height: 78px;
-      padding: 0 6%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #222;
-      background: #080808;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+body{
+  background:#050505;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      border: 2px solid #d6b878;
-      display: grid;
-      place-items: center;
-      color: #d6b878;
-      font-weight: 900;
-      font-size: 20px;
-    }
+/* ================= HEADER ================= */
 
-    nav {
-      display: flex;
-      gap: 30px;
-    }
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:74px;
+  padding:0 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  z-index:1000;
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
+  background:rgba(5,5,5,.88);
+  backdrop-filter:blur(15px);
 
-    nav a:hover {
-      color: #d6b878;
-    }
+  border-bottom:1px solid #202020;
+}
 
-    .hero {
-      min-height: 650px;
-      padding: 100px 7%;
-      display: flex;
-      align-items: center;
-      background:
-        radial-gradient(circle at 75% 45%, #29251c 0%, #101010 35%, #080808 70%);
-    }
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-    .hero-content {
-      max-width: 720px;
-    }
+.logo-mark{
+  width:40px;
+  height:40px;
+}
 
-    .eyebrow {
-      color: #d6b878;
-      font-size: 13px;
-      font-weight: bold;
-      letter-spacing: 4px;
-      margin-bottom: 22px;
-    }
+.logo-mark svg{
+  width:100%;
+  height:100%;
+}
 
-    h1 {
-      font-size: clamp(55px, 9vw, 110px);
-      line-height: .88;
-      letter-spacing: -5px;
-      margin-bottom: 30px;
-    }
+.logo-name{
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:4px;
+}
 
-    .hero p {
-      color: #aaa;
-      font-size: 17px;
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 35px;
-    }
+nav{
+  display:flex;
+  gap:35px;
+}
 
-    .button {
-      display: inline-block;
-      padding: 16px 30px;
-      background: #d6b878;
-      color: #080808;
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
+nav a{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  color:#ddd;
+  transition:.3s;
+}
 
-    .button:hover {
-      background: #fff;
-    }
+nav a:hover{
+  color:#d8bd82;
+}
 
-    .section {
-      padding: 90px 7%;
-    }
+.header-icons{
+  display:flex;
+  gap:18px;
+}
 
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      margin-bottom: 35px;
-    }
+.header-icon{
+  font-size:19px;
+  color:#ddd;
+}
 
-    .section-title h2 {
-      font-size: 42px;
-      letter-spacing: -2px;
-    }
+/* ================= HERO ================= */
 
-    .section-title span {
-      color: #888;
-      font-size: 13px;
-      letter-spacing: 2px;
-    }
+.hero{
+  min-height:760px;
+  height:100vh;
+  position:relative;
+  overflow:hidden;
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
+  display:flex;
+  align-items:center;
 
-    .feature {
-      padding: 35px;
-      border: 1px solid #242424;
-      background: #0e0e0e;
-    }
+  background:
+    radial-gradient(
+      circle at 72% 48%,
+      #29251c 0,
+      #14130f 18%,
+      #080808 48%,
+      #030303 78%
+    );
+}
 
-    .feature-number {
-      color: #d6b878;
-      font-size: 13px;
-      margin-bottom: 45px;
-    }
+/* background glow */
 
-    .feature h3 {
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
+.hero::before{
+  content:"";
+  position:absolute;
 
-    .feature p {
-      color: #888;
-      line-height: 1.6;
-    }
+  width:600px;
+  height:600px;
 
-    .collections {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
+  right:-100px;
+  top:100px;
 
-    .collection {
-      min-height: 420px;
-      padding: 35px;
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
-      background:
-        linear-gradient(145deg, #292929, #0d0d0d);
-      border: 1px solid #252525;
-    }
+  border-radius:50%;
 
-    .collection:nth-child(2) {
-      background:
-        linear-gradient(145deg, #242017, #0d0d0d);
-    }
+  background:
+    radial-gradient(
+      circle,
+      rgba(216,189,130,.16),
+      transparent 65%
+    );
 
-    .collection small {
-      color: #d6b878;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
+  filter:blur(15px);
+}
 
-    .collection h3 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
+/* 3D ring */
 
-    .story {
-      background: #d6b878;
-      color: #080808;
-      padding: 90px 7%;
-    }
+.hero-ring{
+  position:absolute;
 
-    .story h2 {
-      font-size: clamp(42px, 7vw, 80px);
-      max-width: 850px;
-      line-height: .95;
-      letter-spacing: -3px;
-    }
+  width:470px;
+  height:470px;
 
-    .story p {
-      max-width: 650px;
-      margin-top: 25px;
-      line-height: 1.7;
-    }
+  right:8%;
+  top:50%;
 
-    .waitlist {
-      text-align: center;
-      padding: 100px 7%;
-      background: #0d0d0d;
-    }
+  border:1px solid rgba(216,189,130,.55);
 
-    .waitlist h2 {
-      font-size: 48px;
-      margin-bottom: 15px;
-    }
+  border-radius:50%;
 
-    .waitlist p {
-      color: #888;
-      margin-bottom: 30px;
-    }
+  transform:
+    translateY(-50%)
+    perspective(700px)
+    rotateX(65deg)
+    rotateZ(-15deg);
 
-    .email {
-      display: flex;
-      max-width: 500px;
-      margin: auto;
-    }
+  box-shadow:
+    0 0 50px rgba(216,189,130,.08),
+    inset 0 0 50px rgba(216,189,130,.05);
 
-    .email input {
-      flex: 1;
-      padding: 17px;
-      background: #181818;
-      border: 1px solid #333;
-      color: white;
-      outline: none;
-    }
+  animation:ringFloat 8s ease-in-out infinite;
+}
 
-    .email button {
-      padding: 17px 25px;
-      background: #d6b878;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.hero-ring::before{
+  content:"";
 
-    footer {
-      padding: 35px 7%;
-      display: flex;
-      justify-content: space-between;
-      border-top: 1px solid #222;
-      color: #777;
-      font-size: 13px;
-    }
+  position:absolute;
 
-    @media (max-width: 700px) {
-      nav {
-        display: none;
-      }
+  inset:35px;
 
-      .hero {
-        min-height: 600px;
-        padding: 80px 7%;
-      }
+  border:1px solid rgba(255,255,255,.15);
 
-      .features,
-      .collections {
-        grid-template-columns: 1fr;
-      }
+  border-radius:50%;
+}
 
-      .section-title h2 {
-        font-size: 34px;
-      }
+.hero-ring::after{
+  content:"";
 
-      .collection {
-        min-height: 330px;
-      }
+  position:absolute;
 
-      .email {
-        flex-direction: column;
-        gap: 10px;
-      }
+  width:9px;
+  height:9px;
 
-      footer {
-        flex-direction: column;
-        gap: 12px;
-      }
-    }
-  </style>
+  border-radius:50%;
+
+  background:#d8bd82;
+
+  top:30px;
+  left:50%;
+
+  box-shadow:
+    0 0 20px #d8bd82;
+
+  animation:orbit 5s linear infinite;
+}
+
+@keyframes ringFloat{
+
+  0%,100%{
+    transform:
+      translateY(-50%)
+      perspective(700px)
+      rotateX(65deg)
+      rotateZ(-15deg);
+  }
+
+  50%{
+    transform:
+      translateY(-54%)
+      perspective(700px)
+      rotateX(65deg)
+      rotateZ(-8deg);
+  }
+
+}
+
+@keyframes orbit{
+
+  from{
+    transform:rotate(0deg) translateX(205px);
+  }
+
+  to{
+    transform:rotate(360deg) translateX(205px);
+  }
+
+}
+
+/* hero model */
+
+.hero-model{
+  position:absolute;
+
+  right:14%;
+  bottom:-20px;
+
+  width:350px;
+  height:570px;
+
+  transform:
+    perspective(900px)
+    rotateY(-12deg)
+    rotateX(2deg);
+
+  transform-style:preserve-3d;
+
+  opacity:.95;
+}
+
+/* head */
+
+.hero-head{
+  position:absolute;
+
+  width:115px;
+  height:125px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #151515,
+      #777,
+      #191919
+    );
+
+  border-radius:48% 48% 45% 45%;
+
+  top:20px;
+  left:115px;
+
+  box-shadow:
+    25px 20px 35px #000;
+
+  transform:translateZ(50px);
+}
+
+/* body */
+
+.hero-body{
+  position:absolute;
+
+  width:245px;
+  height:390px;
+
+  left:48px;
+  top:115px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #080808,
+      #444,
+      #101010
+    );
+
+  clip-path:polygon(
+    35% 0,
+    65% 0,
+    82% 14%,
+    100% 100%,
+    0 100%,
+    18% 14%
+  );
+
+  box-shadow:
+    35px 35px 50px #000;
+
+  transform:translateZ(30px);
+}
+
+/* shoulder */
+
+.hero-body::before{
+  content:"";
+
+  position:absolute;
+
+  width:100px;
+  height:290px;
+
+  right:-65px;
+  top:20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #111,
+      #666,
+      #101010
+    );
+
+  border-radius:50%;
+
+  transform:rotate(-10deg);
+}
+
+/* logo on shirt */
+
+.hero-body::after{
+  content:"PK";
+
+  position:absolute;
+
+  top:55px;
+  left:100px;
+
+  color:#d8bd82;
+
+  font-size:20px;
+  font-weight:900;
+
+  letter-spacing:-3px;
+}
+
+/* hero text */
+
+.hero-content{
+  position:relative;
+  z-index:10;
+
+  width:52%;
+  padding-left:6%;
+}
+
+.kicker{
+  color:#d8bd82;
+
+  font-size:10px;
+  font-weight:700;
+
+  letter-spacing:5px;
+
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:clamp(55px,7vw,95px);
+
+  line-height:.88;
+
+  letter-spacing:-5px;
+}
+
+.hero h1 span{
+  color:#d8bd82;
+}
+
+.hero-description{
+  max-width:430px;
+
+  color:#999;
+
+  font-size:14px;
+
+  line-height:1.7;
+
+  margin-top:25px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:13px;
+
+  margin-top:32px;
+}
+
+.btn{
+  display:inline-block;
+
+  padding:16px 26px;
+
+  border:1px solid #d8bd82;
+
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:1.5px;
+
+  transition:.3s;
+}
+
+.btn-primary{
+  background:#d8bd82;
+  color:#050505;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+
+  box-shadow:
+    0 15px 35px rgba(216,189,130,.18);
+}
+
+.hero-note{
+  position:absolute;
+
+  right:7%;
+  bottom:15%;
+
+  z-index:20;
+
+  font-family:cursive;
+
+  font-size:25px;
+
+  line-height:1;
+
+  color:#ddd;
+
+  transform:rotate(-8deg);
+}
+
+/* ================= PERFORMANCE ================= */
+
+.performance-bar{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  border-top:1px solid #222;
+  border-bottom:1px solid #222;
+}
+
+.performance{
+  padding:25px;
+
+  display:flex;
+  gap:15px;
+  align-items:center;
+
+  border-right:1px solid #222;
+}
+
+.performance:last-child{
+  border-right:none;
+}
+
+.performance-icon{
+  font-size:25px;
+  color:#d8bd82;
+}
+
+.performance h4{
+  font-size:10px;
+  letter-spacing:1.3px;
+
+  margin-bottom:5px;
+}
+
+.performance p{
+  color:#666;
+  font-size:9px;
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+  padding:90px 5%;
+}
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+
+  margin-bottom:30px;
+}
+
+.overline{
+  color:#d8bd82;
+
+  font-size:9px;
+
+  letter-spacing:5px;
+
+  margin-bottom:10px;
+}
+
+.section-heading h2{
+  font-size:36px;
+
+  letter-spacing:1px;
+}
+
+.view{
+  font-size:9px;
+
+  letter-spacing:2px;
+}
+
+/* ================= COLLECTIONS ================= */
+
+.collection-grid{
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:15px;
+
+  perspective:1200px;
+}
+
+.collection{
+  height:360px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      #444,
+      #171717 45%,
+      #060606 80%
+    );
+
+  border:1px solid #252525;
+
+  transform-style:preserve-3d;
+
+  transition:
+    transform .25s ease,
+    border .3s ease;
+}
+
+.collection:hover{
+  transform:
+    perspective(800px)
+    rotateX(5deg)
+    rotateY(-5deg)
+    translateY(-8px);
+
+  border-color:#d8bd82;
+}
+
+.collection::after{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 35%,
+      rgba(255,255,255,.1),
+      transparent 60%
+    );
+
+  transform:translateX(-100%);
+
+  transition:.8s;
+}
+
+.collection:hover::after{
+  transform:translateX(100%);
+}
+
+.collection-model{
+  position:absolute;
+
+  width:165px;
+  height:245px;
+
+  left:50%;
+  top:43%;
+
+  transform:
+    translate(-50%,-50%)
+    translateZ(60px);
+
+  border-radius:45% 45% 20% 20%;
+
+  background:
+    linear-gradient(
+      100deg,
+      #080808,
+      #666,
+      #111
+    );
+
+  box-shadow:
+    30px 35px 45px #000;
+}
+
+.collection-info{
+  position:absolute;
+
+  left:23px;
+  bottom:22px;
+
+  z-index:5;
+
+  transform:translateZ(90px);
+}
+
+.collection-info small{
+  color:#d8bd82;
+
+  font-size:9px;
+
+  letter-spacing:2px;
+}
+
+.collection-info h3{
+  font-size:16px;
+
+  margin-top:7px;
+}
+
+/* ================= PRODUCTS ================= */
+
+.product-grid{
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:15px;
+
+  perspective:1200px;
+}
+
+.product{
+  background:#090909;
+
+  border:1px solid #222;
+
+  transform-style:preserve-3d;
+
+  transition:
+    transform .2s ease,
+    border .3s;
+}
+
+.product:hover{
+  transform:
+    perspective(800px)
+    rotateX(5deg)
+    rotateY(-5deg)
+    translateY(-8px);
+
+  border-color:#d8bd82;
+}
+
+.product-image{
+  height:280px;
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle,
+      #404040,
+      #151515 42%,
+      #050505 80%
+    );
+}
+
+.product-shirt{
+  width:145px;
+  height:195px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #090909,
+      #777,
+      #111
+    );
+
+  clip-path:polygon(
+    25% 0,
+    40% 7%,
+    60% 7%,
+    75% 0,
+    100% 18%,
+    82% 38%,
+    72% 26%,
+    72% 100%,
+    28% 100%,
+    28% 26%,
+    18% 38%,
+    0 18%
+  );
+
+  transform:
+    translateZ(70px)
+    rotateY(-8deg);
+
+  filter:
+    drop-shadow(25px 30px 25px #000);
+
+  transition:.5s;
+}
+
+.product:hover .product-shirt{
+  transform:
+    translateZ(110px)
+    rotateY(10deg)
+    rotateX(-4deg);
+}
+
+.product-info{
+  padding:18px;
+}
+
+.product-info h3{
+  font-size:12px;
+
+  margin-bottom:7px;
+}
+
+.price{
+  color:#d8bd82;
+
+  font-size:12px;
+}
+
+.colors{
+  display:flex;
+
+  gap:5px;
+
+  margin-top:12px;
+}
+
+.color{
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+
+  border:1px solid #777;
+
+  background:#111;
+}
+
+.color.white{
+  background:#eee;
+}
+
+.color.grey{
+  background:#777;
+}
+
+/* ================= STORY ================= */
+
+.story{
+  min-height:500px;
+
+  padding:80px 5%;
+
+  display:grid;
+
+  grid-template-columns:1.25fr 1fr;
+
+  align-items:center;
+
+  background:
+    linear-gradient(
+      90deg,
+      #151515,
+      #070707
+    );
+}
+
+.story-visual{
+  height:370px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 40% 25%,
+      #555,
+      #202020 40%,
+      #080808 75%
+    );
+}
+
+.story-visual::before{
+  content:"";
+
+  position:absolute;
+
+  width:150px;
+  height:270px;
+
+  left:50%;
+  top:52%;
+
+  transform:
+    translate(-50%,-50%)
+    perspective(500px)
+    rotateY(-12deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      #080808,
+      #777,
+      #111
+    );
+
+  border-radius:45% 45% 20% 20%;
+
+  box-shadow:
+    35px 30px 45px #000;
+}
+
+.story-content{
+  padding:45px;
+}
+
+.story-content h2{
+  font-size:45px;
+
+  line-height:.95;
+
+  letter-spacing:-2px;
+}
+
+.story-content p{
+  max-width:440px;
+
+  color:#999;
+
+  font-size:13px;
+
+  line-height:1.8;
+
+  margin:25px 0;
+}
+
+/* ================= ATHLETE ================= */
+
+.athlete{
+  min-height:480px;
+
+  padding:90px 5%;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 75% 50%,
+      #29251d,
+      #060606 60%
+    );
+}
+
+.athlete-content{
+  position:relative;
+
+  z-index:5;
+
+  max-width:500px;
+}
+
+.athlete h2{
+  font-size:48px;
+
+  line-height:.95;
+}
+
+.athlete p{
+  color:#999;
+
+  font-size:13px;
+
+  line-height:1.7;
+
+  margin:22px 0 30px;
+}
+
+.athlete-model{
+  position:absolute;
+
+  right:12%;
+  bottom:-40px;
+
+  width:280px;
+  height:450px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #070707,
+      #555,
+      #080808
+    );
+
+  clip-path:polygon(
+    42% 0,
+    60% 3%,
+    68% 17%,
+    80% 30%,
+    95% 50%,
+    100% 75%,
+    86% 100%,
+    15% 100%,
+    0 75%,
+    14% 48%,
+    28% 29%,
+    34% 10%
+  );
+
+  filter:
+    drop-shadow(20px 25px 40px #000);
+
+  transform:
+    perspective(700px)
+    rotateY(-12deg);
+}
+
+/* ================= WAITLIST ================= */
+
+.waitlist{
+  padding:70px 5%;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:40px;
+
+  border-top:1px solid #222;
+  border-bottom:1px solid #222;
+}
+
+.waitlist h2{
+  font-size:27px;
+}
+
+.waitlist p{
+  color:#777;
+
+  font-size:11px;
+
+  margin-top:7px;
+}
+
+.email{
+  width:450px;
+
+  display:flex;
+}
+
+.email input{
+  flex:1;
+
+  padding:16px;
+
+  background:#111;
+
+  border:1px solid #333;
+
+  color:#fff;
+
+  outline:none;
+}
+
+.email button{
+  padding:0 25px;
+
+  border:none;
+
+  background:#d8bd82;
+
+  color:#050505;
+
+  font-size:10px;
+
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  padding:35px 5%;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  color:#555;
+
+  font-size:9px;
+
+  letter-spacing:1px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:850px){
+
+  nav{
+    display:none;
+  }
+
+  .hero{
+    min-height:750px;
+  }
+
+  .hero-content{
+    width:100%;
+
+    padding:120px 7% 40px;
+  }
+
+  .hero h1{
+    font-size:57px;
+  }
+
+  .hero-model{
+    right:-100px;
+
+    opacity:.45;
+
+    transform:
+      scale(.8)
+      perspective(900px)
+      rotateY(-12deg);
+  }
+
+  .hero-ring{
+    right:-150px;
+
+    opacity:.5;
+  }
+
+  .hero-note{
+    display:none;
+  }
+
+  .performance-bar{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .performance{
+    border-bottom:1px solid #222;
+  }
+
+  .collection-grid,
+  .product-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .collection{
+    height:300px;
+  }
+
+  .product-image{
+    height:220px;
+  }
+
+  .story{
+    grid-template-columns:1fr;
+  }
+
+  .story-content{
+    padding:40px 0 0;
+  }
+
+  .athlete-model{
+    right:-80px;
+    opacity:.4;
+  }
+
+  .waitlist{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .email{
+    width:100%;
+  }
+}
+
+@media(max-width:500px){
+
+  header{
+    height:65px;
+  }
+
+  .logo-name{
+    font-size:16px;
+    letter-spacing:3px;
+  }
+
+  .header-icons{
+    gap:10px;
+  }
+
+  .hero{
+    min-height:700px;
+  }
+
+  .hero h1{
+    font-size:47px;
+
+    letter-spacing:-3px;
+  }
+
+  .hero-description{
+    font-size:13px;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+
+    align-items:flex-start;
+  }
+
+  .performance{
+    padding:18px 10px;
+  }
+
+  .performance h4{
+    font-size:8px;
+  }
+
+  .performance p{
+    font-size:7px;
+  }
+
+  .section{
+    padding:70px 5%;
+  }
+
+  .section-heading h2{
+    font-size:29px;
+  }
+
+  .collection-grid,
+  .product-grid{
+    gap:8px;
+  }
+
+  .collection{
+    height:250px;
+  }
+
+  .collection-model{
+    width:110px;
+    height:170px;
+  }
+
+  .collection-info{
+    left:13px;
+    bottom:15px;
+  }
+
+  .collection-info h3{
+    font-size:11px;
+  }
+
+  .product-image{
+    height:180px;
+  }
+
+  .product-shirt{
+    width:95px;
+    height:135px;
+  }
+
+  .product-info{
+    padding:12px;
+  }
+
+  .product-info h3{
+    font-size:9px;
+  }
+
+  .story-content h2,
+  .athlete h2{
+    font-size:36px;
+  }
+
+  footer{
+    flex-direction:column;
+
+    gap:12px;
+  }
+}
+
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">
-      <div class="logo-mark">P</div>
-      PLAYKISH
-    </div>
+<!-- ================= HEADER ================= -->
 
-    <nav>
-      <a href="#">SHOP</a>
-      <a href="#">MEN</a>
-      <a href="#">WOMEN</a>
-      <a href="#">ABOUT</a>
-    </nav>
-  </header>
+<header>
 
-  <section class="hero">
-    <div class="hero-content">
+<a href="#" class="logo">
 
-      <div class="eyebrow">
-        PERFORMANCE SPORTSWEAR
-      </div>
+<div class="logo-mark">
 
-      <h1>
-        BUILT TO<br>
-        PERFORM.
-      </h1>
+<svg viewBox="0 0 64 64">
 
-      <p>
-        Premium performance apparel engineered for athletes
-        who refuse to stay average.
-      </p>
+<path
+d="M8 51 L20 8 L56 8 L46 21 L30 21 L27 31 L44 31 L34 44 L23 44 L20 54 Z"
+fill="#d8bd82">
+</path>
 
-      <a href="#collections" class="button">
-        EXPLORE COLLECTION
-      </a>
+</svg>
 
-    </div>
-  </section>
+</div>
 
-  <section class="section">
+<div class="logo-name">
+PLAYKISH
+</div>
 
-    <div class="section-title">
-      <h2>WHY PLAYKISH</h2>
-      <span>ENGINEERED FOR ATHLETES</span>
-    </div>
+</a>
 
-    <div class="features">
+<nav>
 
-      <div class="feature">
-        <div class="feature-number">01</div>
-        <h3>LIGHTWEIGHT</h3>
-        <p>
-          Built to move with you without unnecessary weight.
-        </p>
-      </div>
+<a href="#">HOME</a>
+<a href="#shop">SHOP</a>
+<a href="#collections">COLLECTIONS</a>
+<a href="#story">ABOUT</a>
 
-      <div class="feature">
-        <div class="feature-number">02</div>
-        <h3>BREATHABLE</h3>
-        <p>
-          Performance-focused fabrics designed for intense sessions.
-        </p>
-      </div>
+</nav>
 
-      <div class="feature">
-        <div class="feature-number">03</div>
-        <h3>ATHLETE FIRST</h3>
-        <p>
-          Every detail starts with what athletes actually need.
-        </p>
-      </div>
+<div class="header-icons">
 
-    </div>
+<span class="header-icon">⌕</span>
+<span class="header-icon">♙</span>
+<span class="header-icon">□</span>
 
-  </section>
+</div>
 
-  <section class="section" id="collections">
+</header>
 
-    <div class="section-title">
-      <h2>COLLECTIONS</h2>
-      <span>01 / 02</span>
-    </div>
 
-    <div class="collections">
+<!-- ================= HERO ================= -->
 
-      <div class="collection">
-        <small>01 — MEN</small>
-        <h3>MEN'S PERFORMANCE</h3>
-        <a href="#" class="button">SHOP MEN</a>
-      </div>
+<section class="hero">
 
-      <div class="collection">
-        <small>02 — WOMEN</small>
-        <h3>WOMEN'S PERFORMANCE</h3>
-        <a href="#" class="button">SHOP WOMEN</a>
-      </div>
+<div class="hero-ring"></div>
 
-    </div>
+<div class="hero-model">
 
-  </section>
+<div class="hero-head"></div>
+<div class="hero-body"></div>
 
-  <section class="story">
+</div>
 
-    <h2>
-      MADE FOR THE ONES
-      WHO KEEP MOVING.
-    </h2>
+<div class="hero-content">
 
-    <p>
-      PLAYKISH exists for athletes chasing something bigger.
-      Train harder. Move faster. Keep going.
-    </p>
+<div class="kicker">
+PERFORMANCE SPORTSWEAR
+</div>
 
-  </section>
+<h1>
 
-  <section class="waitlist">
+BUILT TO<br>
+PERFORM.<br>
 
-    <h2>BE FIRST.</h2>
+<span>MADE TO MOVE.</span>
 
-    <p>
-      Join the PLAYKISH launch list.
-    </p>
+</h1>
 
-    <form class="email">
-      <input
-        type="email"
-        placeholder="Your email address"
-        required
-      >
+<p class="hero-description">
 
-      <button type="submit">
-        JOIN
-      </button>
-    </form>
+Premium sportswear for athletes
+who refuse to stay ordinary.
 
-  </section>
+</p>
 
-  <footer>
-    <div>© 2026 PLAYKISH</div>
-    <div>BUILT TO PERFORM. MADE TO MOVE.</div>
-  </footer>
+<div class="hero-buttons">
+
+<a href="#shop" class="btn btn-primary">
+SHOP MEN →
+</a>
+
+<a href="#shop" class="btn">
+SHOP WOMEN →
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-note">
+
+More than<br>
+just clothes.
+
+</div>
+
+</section>
+
+
+<!-- ================= PERFORMANCE ================= -->
+
+<section class="performance-bar">
+
+<div class="performance">
+
+<div class="performance-icon">◈</div>
+
+<div>
+
+<h4>ULTRA LIGHTWEIGHT</h4>
+
+<p>Feel free. Move faster.</p>
+
+</div>
+
+</div>
+
+
+<div class="performance">
+
+<div class="performance-icon">≋</div>
+
+<div>
+
+<h4>BREATHABLE FABRIC</h4>
+
+<p>Stay cool. Perform longer.</p>
+
+</div>
+
+</div>
+
+
+<div class="performance">
+
+<div class="performance-icon">♧</div>
+
+<div>
+
+<h4>ATHLETE BUILT</h4>
+
+<p>Designed with real athletes.</p>
+
+</div>
+
+</div>
+
+
+<div class="performance">
+
+<div class="performance-icon">◇</div>
+
+<div>
+
+<h4>DURABLE</h4>
+
+<p>Made for the grind.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= COLLECTIONS ================= -->
+
+<section class="section" id="collections">
+
+<div class="section-heading">
+
+<div>
+
+<div class="overline">
+EXPLORE OUR
+</div>
+
+<h2>
+COLLECTIONS
+</h2>
+
+</div>
+
+<div class="view">
+VIEW ALL →
+</div>
+
+</div>
+
+
+<div class="collection-grid">
+
+
+<div class="collection">
+
+<div class="collection-model"></div>
+
+<div class="collection-info">
+
+<small>01</small>
+
+<h3>
+MEN'S COLLECTION →
+</h3>
+
+</div>
+
+</div>
+
+
+<div class="collection">
+
+<div class="collection-model"></div>
+
+<div class="collection-info">
+
+<small>02</small>
+
+<h3>
+WOMEN'S COLLECTION →
+</h3>
+
+</div>
+
+</div>
+
+
+<div class="collection">
+
+<div class="collection-model"></div>
+
+<div class="collection-info">
+
+<small>03</small>
+
+<h3>
+PERFORMANCE TEES →
+</h3>
+
+</div>
+
+</div>
+
+
+<div class="collection">
+
+<div class="collection-model"></div>
+
+<div class="collection-info">
+
+<small>04</small>
+
+<h3>
+HOODIES →
+</h3>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="section" id="shop">
+
+<div class="section-heading">
+
+<div>
+
+<div class="overline">
+SHOP PLAYKISH
+</div>
+
+<h2>
+BEST SELLERS
+</h2>
+
+</div>
+
+<div class="view">
+← &nbsp; →
+</div>
+
+</div>
+
+
+<div class="product-grid">
+
+
+<div class="product">
+
+<div class="product-image">
+
+<div class="product-shirt"></div>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+PERFORMANCE TEE
+</h3>
+
+<div class="price">
+₹1,499
+</div>
+
+<div class="colors">
+
+<span class="color"></span>
+<span class="color white"></span>
+<span class="color grey"></span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-image">
+
+<div
+class="product-shirt"
+style="background:linear-gradient(100deg,#ddd,#fff,#aaa)">
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+VELOCITY TEE
+</h3>
+
+<div class="price">
+₹1,499
+</div>
+
+<div class="colors">
+
+<span class="color white"></span>
+<span class="color grey"></span>
+<span class="color"></span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-image">
+
+<div class="product-shirt"></div>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+ENDURANCE HOODIE
+</h3>
+
+<div class="price">
+₹2,499
+</div>
+
+<div class="colors">
+
+<span class="color"></span>
+<span class="color grey"></span>
+<span class="color white"></span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-image">
+
+<div
+class="product-shirt"
+style="height:120px">
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+FLEX SHORTS
+</h3>
+
+<div class="price">
+₹1,999
+</div>
+
+<div class="colors">
+
+<span class="color"></span>
+<span class="color grey"></span>
+<span class="color white"></span>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= STORY ================= -->
+
+<section class="story" id="story">
+
+<div class="story-visual"></div>
+
+<div class="story-content">
+
+<div class="overline">
+OUR STORY
+</div>
+
+<h2>
+
+BUILT FROM<br>
+A DIFFERENT<br>
+MINDSET.
+
+</h2>
+
+<p>
+
+PLAYKISH was born from a simple belief —
+every athlete deserves better gear.
+
+Better movement.
+Better performance.
+A brand that understands
+the grind and the dream.
+
+</p>
+
+<a href="#" class="btn">
+LEARN MORE →
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ================= ATHLETE ================= -->
+
+<section class="athlete">
+
+<div class="athlete-content">
+
+<div class="overline">
+ATHLETE STORIES
+</div>
+
+<h2>
+
+REAL PEOPLE.<br>
+REAL JOURNEYS.
+
+</h2>
+
+<p>
+
+From local courts to bigger dreams —
+hear how PLAYKISH athletes
+are pushing their limits.
+
+</p>
+
+<a href="#" class="btn">
+READ STORIES →
+</a>
+
+</div>
+
+<div class="athlete-model"></div>
+
+</section>
+
+
+<!-- ================= WAITLIST ================= -->
+
+<section class="waitlist">
+
+<div>
+
+<h2>
+BE THE FIRST TO KNOW.
+</h2>
+
+<p>
+Join our waitlist for early access,
+exclusive drops and special offers.
+</p>
+
+</div>
+
+<form class="email">
+
+<input
+type="email"
+placeholder="Enter your email address"
+required
+>
+
+<button type="submit">
+JOIN WAITLIST →
+</button>
+
+</form>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div>
+© 2026 PLAYKISH. ALL RIGHTS RESERVED.
+</div>
+
+<div>
+SHOP &nbsp;&nbsp; ABOUT &nbsp;&nbsp; CONTACT &nbsp;&nbsp; PRIVACY
+</div>
+
+</footer>
+
+
+<script>
+
+const form = document.querySelector(".email");
+
+form.addEventListener("submit", function(event){
+
+  event.preventDefault();
+
+  const button = form.querySelector("button");
+
+  button.textContent = "YOU'RE ON THE LIST ✓";
+
+});
+
+
+/* 3D mouse movement */
+
+const cards = document.querySelectorAll(
+  ".collection, .product"
+);
+
+cards.forEach(function(card){
+
+  card.addEventListener("mousemove",function(event){
+
+    const box = card.getBoundingClientRect();
+
+    const x =
+      event.clientX - box.left;
+
+    const y =
+      event.clientY - box.top;
+
+    const rotateY =
+      ((x / box.width) - 0.5) * 10;
+
+    const rotateX =
+      ((y / box.height) - 0.5) * -10;
+
+    card.style.transform =
+      "perspective(800px) rotateX(" +
+      rotateX +
+      "deg) rotateY(" +
+      rotateY +
+      "deg) translateY(-5px)";
+
+  });
+
+
+  card.addEventListener("mouseleave",function(){
+
+    card.style.transform = "";
+
+  });
+
+});
+
+</script>
 
 </body>
 </html>
