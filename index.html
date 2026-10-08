@@ -2,1252 +2,830 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>PLAYKISH | Performance Sportswear</title>
+<title>PLAYKISH — Performance Sportswear</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-  background:#050505;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
+background:#050505;
+color:#fff;
+font-family:Arial,Helvetica,sans-serif;
+overflow-x:hidden;
 }
 
 a{
-  text-decoration:none;
-  color:inherit;
+color:inherit;
+text-decoration:none;
 }
 
-/* ================= HEADER ================= */
+/* =========================
+HEADER
+========================= */
 
 header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:74px;
-  padding:0 5%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  z-index:1000;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:74px;
+padding:0 5%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+z-index:1000;
 
-  background:rgba(5,5,5,.88);
-  backdrop-filter:blur(15px);
+background:rgba(5,5,5,.72);
+backdrop-filter:blur(16px);
 
-  border-bottom:1px solid #202020;
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
+display:flex;
+align-items:center;
+gap:12px;
 }
 
-.logo-mark{
-  width:40px;
-  height:40px;
-}
-
-.logo-mark svg{
-  width:100%;
-  height:100%;
+.logo svg{
+width:39px;
+height:39px;
 }
 
 .logo-name{
-  font-size:20px;
-  font-weight:900;
-  letter-spacing:4px;
+font-size:20px;
+font-weight:900;
+letter-spacing:4px;
 }
 
 nav{
-  display:flex;
-  gap:35px;
+display:flex;
+gap:38px;
 }
 
 nav a{
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:1.5px;
-  color:#ddd;
-  transition:.3s;
+font-size:11px;
+font-weight:700;
+letter-spacing:1.5px;
+opacity:.8;
+transition:.3s;
 }
 
 nav a:hover{
-  color:#d8bd82;
+opacity:1;
+color:#d8bd82;
 }
 
 .header-icons{
-  display:flex;
-  gap:18px;
+display:flex;
+gap:20px;
+font-size:20px;
 }
 
-.header-icon{
-  font-size:19px;
-  color:#ddd;
+.icon{
+cursor:pointer;
 }
 
-/* ================= HERO ================= */
+/* =========================
+HERO
+========================= */
 
 .hero{
-  min-height:760px;
-  height:100vh;
-  position:relative;
-  overflow:hidden;
+height:100vh;
+min-height:700px;
+position:relative;
+overflow:hidden;
 
-  display:flex;
-  align-items:center;
+display:flex;
+align-items:center;
 
-  background:
-    radial-gradient(
-      circle at 72% 48%,
-      #29251c 0,
-      #14130f 18%,
-      #080808 48%,
-      #030303 78%
-    );
+background:
+radial-gradient(circle at 75% 45%,#252116 0%,#11100d 20%,#070707 50%,#030303 80%);
 }
 
-/* background glow */
-
-.hero::before{
-  content:"";
-  position:absolute;
-
-  width:600px;
-  height:600px;
-
-  right:-100px;
-  top:100px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(216,189,130,.16),
-      transparent 65%
-    );
-
-  filter:blur(15px);
+#threeCanvas{
+position:absolute;
+inset:0;
+z-index:1;
 }
-
-/* 3D ring */
-
-.hero-ring{
-  position:absolute;
-
-  width:470px;
-  height:470px;
-
-  right:8%;
-  top:50%;
-
-  border:1px solid rgba(216,189,130,.55);
-
-  border-radius:50%;
-
-  transform:
-    translateY(-50%)
-    perspective(700px)
-    rotateX(65deg)
-    rotateZ(-15deg);
-
-  box-shadow:
-    0 0 50px rgba(216,189,130,.08),
-    inset 0 0 50px rgba(216,189,130,.05);
-
-  animation:ringFloat 8s ease-in-out infinite;
-}
-
-.hero-ring::before{
-  content:"";
-
-  position:absolute;
-
-  inset:35px;
-
-  border:1px solid rgba(255,255,255,.15);
-
-  border-radius:50%;
-}
-
-.hero-ring::after{
-  content:"";
-
-  position:absolute;
-
-  width:9px;
-  height:9px;
-
-  border-radius:50%;
-
-  background:#d8bd82;
-
-  top:30px;
-  left:50%;
-
-  box-shadow:
-    0 0 20px #d8bd82;
-
-  animation:orbit 5s linear infinite;
-}
-
-@keyframes ringFloat{
-
-  0%,100%{
-    transform:
-      translateY(-50%)
-      perspective(700px)
-      rotateX(65deg)
-      rotateZ(-15deg);
-  }
-
-  50%{
-    transform:
-      translateY(-54%)
-      perspective(700px)
-      rotateX(65deg)
-      rotateZ(-8deg);
-  }
-
-}
-
-@keyframes orbit{
-
-  from{
-    transform:rotate(0deg) translateX(205px);
-  }
-
-  to{
-    transform:rotate(360deg) translateX(205px);
-  }
-
-}
-
-/* hero model */
-
-.hero-model{
-  position:absolute;
-
-  right:14%;
-  bottom:-20px;
-
-  width:350px;
-  height:570px;
-
-  transform:
-    perspective(900px)
-    rotateY(-12deg)
-    rotateX(2deg);
-
-  transform-style:preserve-3d;
-
-  opacity:.95;
-}
-
-/* head */
-
-.hero-head{
-  position:absolute;
-
-  width:115px;
-  height:125px;
-
-  background:
-    linear-gradient(
-      110deg,
-      #151515,
-      #777,
-      #191919
-    );
-
-  border-radius:48% 48% 45% 45%;
-
-  top:20px;
-  left:115px;
-
-  box-shadow:
-    25px 20px 35px #000;
-
-  transform:translateZ(50px);
-}
-
-/* body */
-
-.hero-body{
-  position:absolute;
-
-  width:245px;
-  height:390px;
-
-  left:48px;
-  top:115px;
-
-  background:
-    linear-gradient(
-      100deg,
-      #080808,
-      #444,
-      #101010
-    );
-
-  clip-path:polygon(
-    35% 0,
-    65% 0,
-    82% 14%,
-    100% 100%,
-    0 100%,
-    18% 14%
-  );
-
-  box-shadow:
-    35px 35px 50px #000;
-
-  transform:translateZ(30px);
-}
-
-/* shoulder */
-
-.hero-body::before{
-  content:"";
-
-  position:absolute;
-
-  width:100px;
-  height:290px;
-
-  right:-65px;
-  top:20px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #111,
-      #666,
-      #101010
-    );
-
-  border-radius:50%;
-
-  transform:rotate(-10deg);
-}
-
-/* logo on shirt */
-
-.hero-body::after{
-  content:"PK";
-
-  position:absolute;
-
-  top:55px;
-  left:100px;
-
-  color:#d8bd82;
-
-  font-size:20px;
-  font-weight:900;
-
-  letter-spacing:-3px;
-}
-
-/* hero text */
 
 .hero-content{
-  position:relative;
-  z-index:10;
-
-  width:52%;
-  padding-left:6%;
+position:relative;
+z-index:5;
+width:50%;
+padding-left:6%;
 }
 
 .kicker{
-  color:#d8bd82;
-
-  font-size:10px;
-  font-weight:700;
-
-  letter-spacing:5px;
-
-  margin-bottom:20px;
+font-size:10px;
+letter-spacing:6px;
+color:#d8bd82;
+margin-bottom:18px;
 }
 
 .hero h1{
-  font-size:clamp(55px,7vw,95px);
-
-  line-height:.88;
-
-  letter-spacing:-5px;
+font-size:clamp(55px,7vw,100px);
+line-height:.88;
+letter-spacing:-5px;
+text-transform:uppercase;
 }
 
 .hero h1 span{
-  color:#d8bd82;
+color:#d8bd82;
 }
 
 .hero-description{
-  max-width:430px;
-
-  color:#999;
-
-  font-size:14px;
-
-  line-height:1.7;
-
-  margin-top:25px;
+margin-top:25px;
+max-width:450px;
+font-size:14px;
+line-height:1.7;
+color:#aaa;
 }
 
 .hero-buttons{
-  display:flex;
-  gap:13px;
-
-  margin-top:32px;
+display:flex;
+gap:14px;
+margin-top:32px;
 }
 
 .btn{
-  display:inline-block;
-
-  padding:16px 26px;
-
-  border:1px solid #d8bd82;
-
-  font-size:10px;
-  font-weight:900;
-
-  letter-spacing:1.5px;
-
-  transition:.3s;
+padding:16px 27px;
+font-size:10px;
+font-weight:900;
+letter-spacing:1.5px;
+border:1px solid #d8bd82;
+transition:.3s;
 }
 
 .btn-primary{
-  background:#d8bd82;
-  color:#050505;
+background:#d8bd82;
+color:#080808;
 }
 
 .btn:hover{
-  transform:translateY(-4px);
-
-  box-shadow:
-    0 15px 35px rgba(216,189,130,.18);
+transform:translateY(-3px);
+box-shadow:0 15px 35px rgba(216,189,130,.2);
 }
 
 .hero-note{
-  position:absolute;
+position:absolute;
+right:7%;
+bottom:15%;
+z-index:4;
 
-  right:7%;
-  bottom:15%;
-
-  z-index:20;
-
-  font-family:cursive;
-
-  font-size:25px;
-
-  line-height:1;
-
-  color:#ddd;
-
-  transform:rotate(-8deg);
+font-family:cursive;
+font-size:27px;
+line-height:1;
+transform:rotate(-8deg);
+color:#ddd;
+opacity:.8;
 }
 
-/* ================= PERFORMANCE ================= */
+/* =========================
+PERFORMANCE BAR
+========================= */
 
 .performance-bar{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
+display:grid;
+grid-template-columns:repeat(4,1fr);
 
-  border-top:1px solid #222;
-  border-bottom:1px solid #222;
+border-top:1px solid #242424;
+border-bottom:1px solid #242424;
+
+background:#050505;
 }
 
 .performance{
-  padding:25px;
-
-  display:flex;
-  gap:15px;
-  align-items:center;
-
-  border-right:1px solid #222;
+padding:27px 30px;
+border-right:1px solid #242424;
+display:flex;
+gap:15px;
+align-items:center;
 }
 
 .performance:last-child{
-  border-right:none;
+border-right:none;
 }
 
 .performance-icon{
-  font-size:25px;
-  color:#d8bd82;
+font-size:25px;
+color:#d8bd82;
 }
 
 .performance h4{
-  font-size:10px;
-  letter-spacing:1.3px;
-
-  margin-bottom:5px;
+font-size:10px;
+letter-spacing:1.5px;
+margin-bottom:5px;
 }
 
 .performance p{
-  color:#666;
-  font-size:9px;
+font-size:9px;
+color:#777;
 }
 
-/* ================= SECTIONS ================= */
+/* =========================
+SECTION
+========================= */
 
 .section{
-  padding:90px 5%;
+padding:90px 5%;
 }
 
 .section-heading{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-
-  margin-bottom:30px;
+display:flex;
+align-items:end;
+justify-content:space-between;
+margin-bottom:30px;
 }
 
 .overline{
-  color:#d8bd82;
-
-  font-size:9px;
-
-  letter-spacing:5px;
-
-  margin-bottom:10px;
+font-size:9px;
+letter-spacing:5px;
+color:#d8bd82;
+margin-bottom:10px;
 }
 
 .section-heading h2{
-  font-size:36px;
-
-  letter-spacing:1px;
+font-size:36px;
+letter-spacing:2px;
 }
 
 .view{
-  font-size:9px;
-
-  letter-spacing:2px;
+font-size:9px;
+letter-spacing:2px;
 }
 
-/* ================= COLLECTIONS ================= */
+/* =========================
+3D COLLECTION CARDS
+========================= */
 
 .collection-grid{
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:15px;
-
-  perspective:1200px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
 }
 
 .collection{
-  height:360px;
+height:350px;
+position:relative;
+overflow:hidden;
 
-  position:relative;
+background:
+radial-gradient(circle at 50% 30%,#454545,#151515 45%,#070707 80%);
 
-  overflow:hidden;
+border:1px solid #252525;
 
-  background:
-    radial-gradient(
-      circle at 50% 30%,
-      #444,
-      #171717 45%,
-      #060606 80%
-    );
-
-  border:1px solid #252525;
-
-  transform-style:preserve-3d;
-
-  transition:
-    transform .25s ease,
-    border .3s ease;
+transform-style:preserve-3d;
+transition:transform .15s ease,border .3s;
 }
 
 .collection:hover{
-  transform:
-    perspective(800px)
-    rotateX(5deg)
-    rotateY(-5deg)
-    translateY(-8px);
-
-  border-color:#d8bd82;
+border-color:#d8bd82;
 }
 
-.collection::after{
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-    linear-gradient(
-      120deg,
-      transparent 35%,
-      rgba(255,255,255,.1),
-      transparent 60%
-    );
-
-  transform:translateX(-100%);
-
-  transition:.8s;
+.collection::before{
+content:"";
+position:absolute;
+inset:-30%;
+background:
+linear-gradient(
+120deg,
+transparent 35%,
+rgba(255,255,255,.08),
+transparent 65%
+);
+transform:translateX(-100%) rotate(15deg);
+transition:1s;
 }
 
-.collection:hover::after{
-  transform:translateX(100%);
+.collection:hover::before{
+transform:translateX(100%) rotate(15deg);
 }
 
 .collection-model{
-  position:absolute;
+position:absolute;
+width:190px;
+height:260px;
 
-  width:165px;
-  height:245px;
+left:50%;
+top:35%;
 
-  left:50%;
-  top:43%;
+transform:translate(-50%,-50%) translateZ(50px);
 
-  transform:
-    translate(-50%,-50%)
-    translateZ(60px);
+border-radius:50% 50% 30% 30%;
 
-  border-radius:45% 45% 20% 20%;
+background:
+linear-gradient(
+90deg,
+#090909,
+#555,
+#101010
+);
 
-  background:
-    linear-gradient(
-      100deg,
-      #080808,
-      #666,
-      #111
-    );
+box-shadow:
+20px 30px 50px #000;
 
-  box-shadow:
-    30px 35px 45px #000;
+transition:.4s;
+}
+
+.collection:hover .collection-model{
+transform:
+translate(-50%,-50%)
+translateZ(100px)
+rotateY(-7deg);
 }
 
 .collection-info{
-  position:absolute;
-
-  left:23px;
-  bottom:22px;
-
-  z-index:5;
-
-  transform:translateZ(90px);
+position:absolute;
+left:25px;
+bottom:24px;
+z-index:3;
+transform:translateZ(70px);
 }
 
 .collection-info small{
-  color:#d8bd82;
-
-  font-size:9px;
-
-  letter-spacing:2px;
+color:#d8bd82;
+font-size:9px;
+letter-spacing:2px;
 }
 
 .collection-info h3{
-  font-size:16px;
-
-  margin-top:7px;
+font-size:18px;
+margin-top:7px;
 }
 
-/* ================= PRODUCTS ================= */
+/* =========================
+PRODUCTS
+========================= */
 
 .product-grid{
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:15px;
-
-  perspective:1200px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
 }
 
 .product{
-  background:#090909;
-
-  border:1px solid #222;
-
-  transform-style:preserve-3d;
-
-  transition:
-    transform .2s ease,
-    border .3s;
+background:#0a0a0a;
+border:1px solid #222;
+transition:.3s;
+transform-style:preserve-3d;
 }
 
 .product:hover{
-  transform:
-    perspective(800px)
-    rotateX(5deg)
-    rotateY(-5deg)
-    translateY(-8px);
-
-  border-color:#d8bd82;
+border-color:#d8bd82;
+transform:translateY(-8px);
 }
 
 .product-image{
-  height:280px;
+height:280px;
+position:relative;
+overflow:hidden;
 
-  display:flex;
+background:
+radial-gradient(circle,#444,#151515 40%,#050505 80%);
 
-  justify-content:center;
-  align-items:center;
-
-  position:relative;
-
-  overflow:hidden;
-
-  background:
-    radial-gradient(
-      circle,
-      #404040,
-      #151515 42%,
-      #050505 80%
-    );
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .product-shirt{
-  width:145px;
-  height:195px;
+width:140px;
+height:190px;
 
-  background:
-    linear-gradient(
-      100deg,
-      #090909,
-      #777,
-      #111
-    );
+background:
+linear-gradient(
+100deg,
+#111,
+#666 48%,
+#111
+);
 
-  clip-path:polygon(
-    25% 0,
-    40% 7%,
-    60% 7%,
-    75% 0,
-    100% 18%,
-    82% 38%,
-    72% 26%,
-    72% 100%,
-    28% 100%,
-    28% 26%,
-    18% 38%,
-    0 18%
-  );
+clip-path:polygon(
+25% 0,
+40% 7%,
+60% 7%,
+75% 0,
+100% 18%,
+82% 38%,
+72% 26%,
+72% 100%,
+28% 100%,
+28% 26%,
+18% 38%,
+0 18%
+);
 
-  transform:
-    translateZ(70px)
-    rotateY(-8deg);
+filter:drop-shadow(20px 25px 25px #000);
 
-  filter:
-    drop-shadow(25px 30px 25px #000);
+transform:translateZ(50px) rotateY(-8deg);
 
-  transition:.5s;
+transition:.5s;
 }
 
 .product:hover .product-shirt{
-  transform:
-    translateZ(110px)
-    rotateY(10deg)
-    rotateX(-4deg);
+transform:
+translateZ(90px)
+rotateY(12deg)
+rotateX(-4deg);
 }
 
 .product-info{
-  padding:18px;
+padding:18px;
 }
 
 .product-info h3{
-  font-size:12px;
-
-  margin-bottom:7px;
+font-size:12px;
+margin-bottom:7px;
 }
 
 .price{
-  color:#d8bd82;
-
-  font-size:12px;
+font-size:12px;
+color:#d8bd82;
 }
 
 .colors{
-  display:flex;
-
-  gap:5px;
-
-  margin-top:12px;
+display:flex;
+gap:5px;
+margin-top:12px;
 }
 
 .color{
-  width:10px;
-  height:10px;
-
-  border-radius:50%;
-
-  border:1px solid #777;
-
-  background:#111;
+width:10px;
+height:10px;
+border-radius:50%;
+background:#222;
+border:1px solid #777;
 }
 
-.color.white{
-  background:#eee;
+.color:nth-child(2){
+background:#eee;
 }
 
-.color.grey{
-  background:#777;
+.color:nth-child(3){
+background:#777;
 }
 
-/* ================= STORY ================= */
+/* =========================
+STORY
+========================= */
 
 .story{
-  min-height:500px;
+min-height:520px;
+padding:90px 5%;
 
-  padding:80px 5%;
+display:grid;
+grid-template-columns:1.3fr 1fr;
+align-items:center;
 
-  display:grid;
-
-  grid-template-columns:1.25fr 1fr;
-
-  align-items:center;
-
-  background:
-    linear-gradient(
-      90deg,
-      #151515,
-      #070707
-    );
+background:
+linear-gradient(
+90deg,
+#151515,
+#090909
+);
 }
 
 .story-visual{
-  height:370px;
+height:380px;
+position:relative;
+overflow:hidden;
 
-  position:relative;
-
-  overflow:hidden;
-
-  background:
-    radial-gradient(
-      circle at 40% 25%,
-      #555,
-      #202020 40%,
-      #080808 75%
-    );
+background:
+radial-gradient(circle at 40% 30%,#555,#202020 35%,#080808 75%);
 }
 
-.story-visual::before{
-  content:"";
-
-  position:absolute;
-
-  width:150px;
-  height:270px;
-
-  left:50%;
-  top:52%;
-
-  transform:
-    translate(-50%,-50%)
-    perspective(500px)
-    rotateY(-12deg);
-
-  background:
-    linear-gradient(
-      90deg,
-      #080808,
-      #777,
-      #111
-    );
-
-  border-radius:45% 45% 20% 20%;
-
-  box-shadow:
-    35px 30px 45px #000;
+.story-visual::after{
+content:"";
+position:absolute;
+width:180px;
+height:300px;
+background:linear-gradient(90deg,#111,#777,#111);
+left:50%;
+top:55%;
+transform:translate(-50%,-50%);
+border-radius:50%;
+box-shadow:30px 30px 50px #000;
 }
 
 .story-content{
-  padding:45px;
+padding:50px;
 }
 
 .story-content h2{
-  font-size:45px;
-
-  line-height:.95;
-
-  letter-spacing:-2px;
+font-size:45px;
+line-height:.95;
+letter-spacing:-2px;
 }
 
 .story-content p{
-  max-width:440px;
-
-  color:#999;
-
-  font-size:13px;
-
-  line-height:1.8;
-
-  margin:25px 0;
+color:#999;
+font-size:13px;
+line-height:1.8;
+margin:25px 0;
+max-width:450px;
 }
 
-/* ================= ATHLETE ================= */
+/* =========================
+ATHLETE
+========================= */
 
 .athlete{
-  min-height:480px;
+padding:100px 5%;
+position:relative;
+overflow:hidden;
 
-  padding:90px 5%;
-
-  position:relative;
-
-  overflow:hidden;
-
-  background:
-    radial-gradient(
-      circle at 75% 50%,
-      #29251d,
-      #060606 60%
-    );
+background:
+radial-gradient(circle at 75% 50%,#28241b,#070707 60%);
 }
 
 .athlete-content{
-  position:relative;
-
-  z-index:5;
-
-  max-width:500px;
+position:relative;
+z-index:3;
+max-width:500px;
 }
 
 .athlete h2{
-  font-size:48px;
-
-  line-height:.95;
+font-size:48px;
+line-height:.95;
 }
 
 .athlete p{
-  color:#999;
-
-  font-size:13px;
-
-  line-height:1.7;
-
-  margin:22px 0 30px;
+color:#999;
+font-size:13px;
+line-height:1.7;
+margin:20px 0 30px;
 }
 
-.athlete-model{
-  position:absolute;
+.athlete-silhouette{
+position:absolute;
+right:10%;
+bottom:-30px;
 
-  right:12%;
-  bottom:-40px;
+width:350px;
+height:470px;
 
-  width:280px;
-  height:450px;
+background:
+linear-gradient(
+90deg,
+#050505,
+#444,
+#080808
+);
 
-  background:
-    linear-gradient(
-      90deg,
-      #070707,
-      #555,
-      #080808
-    );
+clip-path:polygon(
+43% 0,
+60% 3%,
+68% 16%,
+76% 30%,
+88% 44%,
+100% 70%,
+87% 100%,
+16% 100%,
+0 75%,
+14% 45%,
+27% 29%,
+34% 10%
+);
 
-  clip-path:polygon(
-    42% 0,
-    60% 3%,
-    68% 17%,
-    80% 30%,
-    95% 50%,
-    100% 75%,
-    86% 100%,
-    15% 100%,
-    0 75%,
-    14% 48%,
-    28% 29%,
-    34% 10%
-  );
-
-  filter:
-    drop-shadow(20px 25px 40px #000);
-
-  transform:
-    perspective(700px)
-    rotateY(-12deg);
+filter:drop-shadow(0 20px 40px #000);
 }
 
-/* ================= WAITLIST ================= */
+/* =========================
+WAITLIST
+========================= */
 
 .waitlist{
-  padding:70px 5%;
+padding:80px 5%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:40px;
 
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:40px;
-
-  border-top:1px solid #222;
-  border-bottom:1px solid #222;
+border-top:1px solid #222;
+border-bottom:1px solid #222;
 }
 
 .waitlist h2{
-  font-size:27px;
+font-size:27px;
 }
 
 .waitlist p{
-  color:#777;
-
-  font-size:11px;
-
-  margin-top:7px;
+font-size:11px;
+color:#777;
+margin-top:8px;
 }
 
 .email{
-  width:450px;
-
-  display:flex;
+display:flex;
+width:440px;
 }
 
 .email input{
-  flex:1;
-
-  padding:16px;
-
-  background:#111;
-
-  border:1px solid #333;
-
-  color:#fff;
-
-  outline:none;
+flex:1;
+background:#111;
+border:1px solid #333;
+padding:16px;
+color:#fff;
+outline:none;
 }
 
 .email button{
-  padding:0 25px;
-
-  border:none;
-
-  background:#d8bd82;
-
-  color:#050505;
-
-  font-size:10px;
-
-  font-weight:900;
-
-  cursor:pointer;
+border:0;
+background:#d8bd82;
+padding:0 25px;
+font-size:10px;
+font-weight:900;
+cursor:pointer;
 }
 
-/* ================= FOOTER ================= */
+/* =========================
+FOOTER
+========================= */
 
 footer{
-  padding:35px 5%;
-
-  display:flex;
-
-  justify-content:space-between;
-
-  color:#555;
-
-  font-size:9px;
-
-  letter-spacing:1px;
+padding:35px 5%;
+display:flex;
+justify-content:space-between;
+color:#555;
+font-size:9px;
+letter-spacing:1px;
 }
 
-/* ================= MOBILE ================= */
+/* =========================
+MOBILE
+========================= */
 
-@media(max-width:850px){
+@media(max-width:800px){
 
-  nav{
-    display:none;
-  }
-
-  .hero{
-    min-height:750px;
-  }
-
-  .hero-content{
-    width:100%;
-
-    padding:120px 7% 40px;
-  }
-
-  .hero h1{
-    font-size:57px;
-  }
-
-  .hero-model{
-    right:-100px;
-
-    opacity:.45;
-
-    transform:
-      scale(.8)
-      perspective(900px)
-      rotateY(-12deg);
-  }
-
-  .hero-ring{
-    right:-150px;
-
-    opacity:.5;
-  }
-
-  .hero-note{
-    display:none;
-  }
-
-  .performance-bar{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .performance{
-    border-bottom:1px solid #222;
-  }
-
-  .collection-grid,
-  .product-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .collection{
-    height:300px;
-  }
-
-  .product-image{
-    height:220px;
-  }
-
-  .story{
-    grid-template-columns:1fr;
-  }
-
-  .story-content{
-    padding:40px 0 0;
-  }
-
-  .athlete-model{
-    right:-80px;
-    opacity:.4;
-  }
-
-  .waitlist{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .email{
-    width:100%;
-  }
+header{
+height:65px;
 }
 
-@media(max-width:500px){
+.logo-name{
+font-size:16px;
+letter-spacing:3px;
+}
 
-  header{
-    height:65px;
-  }
+nav{
+display:none;
+}
 
-  .logo-name{
-    font-size:16px;
-    letter-spacing:3px;
-  }
+.header-icons{
+font-size:17px;
+}
 
-  .header-icons{
-    gap:10px;
-  }
+.hero{
+min-height:720px;
+}
 
-  .hero{
-    min-height:700px;
-  }
+.hero-content{
+width:100%;
+padding:100px 7% 40px;
+}
 
-  .hero h1{
-    font-size:47px;
+.hero h1{
+font-size:58px;
+letter-spacing:-4px;
+}
 
-    letter-spacing:-3px;
-  }
+.hero-note{
+right:7%;
+bottom:10%;
+}
 
-  .hero-description{
-    font-size:13px;
-  }
+.performance-bar{
+grid-template-columns:repeat(2,1fr);
+}
 
-  .hero-buttons{
-    flex-direction:column;
+.performance{
+border-bottom:1px solid #222;
+}
 
-    align-items:flex-start;
-  }
+.collection-grid,
+.product-grid{
+grid-template-columns:repeat(2,1fr);
+}
 
-  .performance{
-    padding:18px 10px;
-  }
+.collection{
+height:280px;
+}
 
-  .performance h4{
-    font-size:8px;
-  }
+.product-image{
+height:220px;
+}
 
-  .performance p{
-    font-size:7px;
-  }
+.story{
+grid-template-columns:1fr;
+}
 
-  .section{
-    padding:70px 5%;
-  }
+.story-content{
+padding:40px 0 0;
+}
 
-  .section-heading h2{
-    font-size:29px;
-  }
+.athlete{
+min-height:600px;
+}
 
-  .collection-grid,
-  .product-grid{
-    gap:8px;
-  }
+.athlete-silhouette{
+opacity:.4;
+right:-70px;
+}
 
-  .collection{
-    height:250px;
-  }
+.waitlist{
+flex-direction:column;
+align-items:flex-start;
+}
 
-  .collection-model{
-    width:110px;
-    height:170px;
-  }
+.email{
+width:100%;
+}
 
-  .collection-info{
-    left:13px;
-    bottom:15px;
-  }
+}
 
-  .collection-info h3{
-    font-size:11px;
-  }
+@media(max-width:480px){
 
-  .product-image{
-    height:180px;
-  }
+.hero h1{
+font-size:49px;
+}
 
-  .product-shirt{
-    width:95px;
-    height:135px;
-  }
+.hero-buttons{
+flex-direction:column;
+align-items:flex-start;
+}
 
-  .product-info{
-    padding:12px;
-  }
+.performance-bar{
+grid-template-columns:1fr 1fr;
+}
 
-  .product-info h3{
-    font-size:9px;
-  }
+.performance{
+padding:20px 12px;
+}
 
-  .story-content h2,
-  .athlete h2{
-    font-size:36px;
-  }
+.performance h4{
+font-size:8px;
+}
 
-  footer{
-    flex-direction:column;
+.performance p{
+font-size:7px;
+}
 
-    gap:12px;
-  }
+.collection-grid,
+.product-grid{
+grid-template-columns:1fr 1fr;
+gap:8px;
+}
+
+.collection{
+height:250px;
+}
+
+.collection-model{
+width:125px;
+height:180px;
+}
+
+.collection-info{
+left:14px;
+bottom:15px;
+}
+
+.collection-info h3{
+font-size:13px;
+}
+
+.product-image{
+height:190px;
+}
+
+.product-shirt{
+width:100px;
+height:140px;
+}
+
+.story-content h2,
+.athlete h2{
+font-size:37px;
+}
+
+footer{
+flex-direction:column;
+gap:10px;
+}
+
 }
 
 </style>
@@ -1255,24 +833,20 @@ footer{
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 
 <header>
 
-<a href="#" class="logo">
-
-<div class="logo-mark">
+<a class="logo" href="#">
 
 <svg viewBox="0 0 64 64">
 
 <path
-d="M8 51 L20 8 L56 8 L46 21 L30 21 L27 31 L44 31 L34 44 L23 44 L20 54 Z"
-fill="#d8bd82">
-</path>
+d="M8 50L20 8H56L47 20H29L25 32H43L34 44H21L18 54Z"
+fill="#d8bd82"
+/>
 
 </svg>
-
-</div>
 
 <div class="logo-name">
 PLAYKISH
@@ -1281,37 +855,26 @@ PLAYKISH
 </a>
 
 <nav>
-
 <a href="#">HOME</a>
 <a href="#shop">SHOP</a>
 <a href="#collections">COLLECTIONS</a>
 <a href="#story">ABOUT</a>
-
 </nav>
 
 <div class="header-icons">
-
-<span class="header-icon">⌕</span>
-<span class="header-icon">♙</span>
-<span class="header-icon">□</span>
-
+<span class="icon">⌕</span>
+<span class="icon">♙</span>
+<span class="icon">□</span>
 </div>
 
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-ring"></div>
-
-<div class="hero-model">
-
-<div class="hero-head"></div>
-<div class="hero-body"></div>
-
-</div>
+<canvas id="threeCanvas"></canvas>
 
 <div class="hero-content">
 
@@ -1320,19 +883,14 @@ PERFORMANCE SPORTSWEAR
 </div>
 
 <h1>
-
 BUILT TO<br>
 PERFORM.<br>
-
 <span>MADE TO MOVE.</span>
-
 </h1>
 
 <p class="hero-description">
-
-Premium sportswear for athletes
+Premium performance sportswear for athletes
 who refuse to stay ordinary.
-
 </p>
 
 <div class="hero-buttons">
@@ -1350,16 +908,14 @@ SHOP WOMEN →
 </div>
 
 <div class="hero-note">
-
 More than<br>
 just clothes.
-
 </div>
 
 </section>
 
 
-<!-- ================= PERFORMANCE ================= -->
+<!-- PERFORMANCE -->
 
 <section class="performance-bar">
 
@@ -1368,56 +924,41 @@ just clothes.
 <div class="performance-icon">◈</div>
 
 <div>
-
 <h4>ULTRA LIGHTWEIGHT</h4>
-
 <p>Feel free. Move faster.</p>
-
 </div>
 
 </div>
-
 
 <div class="performance">
 
 <div class="performance-icon">≋</div>
 
 <div>
-
 <h4>BREATHABLE FABRIC</h4>
-
 <p>Stay cool. Perform longer.</p>
-
 </div>
 
 </div>
-
 
 <div class="performance">
 
 <div class="performance-icon">♧</div>
 
 <div>
-
 <h4>ATHLETE BUILT</h4>
-
 <p>Designed with real athletes.</p>
-
 </div>
 
 </div>
-
 
 <div class="performance">
 
 <div class="performance-icon">◇</div>
 
 <div>
-
 <h4>DURABLE</h4>
-
 <p>Made for the grind.</p>
-
 </div>
 
 </div>
@@ -1425,22 +966,15 @@ just clothes.
 </section>
 
 
-<!-- ================= COLLECTIONS ================= -->
+<!-- COLLECTIONS -->
 
 <section class="section" id="collections">
 
 <div class="section-heading">
 
 <div>
-
-<div class="overline">
-EXPLORE OUR
-</div>
-
-<h2>
-COLLECTIONS
-</h2>
-
+<div class="overline">EXPLORE OUR</div>
+<h2>COLLECTIONS</h2>
 </div>
 
 <div class="view">
@@ -1452,19 +986,13 @@ VIEW ALL →
 
 <div class="collection-grid">
 
-
 <div class="collection">
 
 <div class="collection-model"></div>
 
 <div class="collection-info">
-
 <small>01</small>
-
-<h3>
-MEN'S COLLECTION →
-</h3>
-
+<h3>MEN'S COLLECTION →</h3>
 </div>
 
 </div>
@@ -1475,13 +1003,8 @@ MEN'S COLLECTION →
 <div class="collection-model"></div>
 
 <div class="collection-info">
-
 <small>02</small>
-
-<h3>
-WOMEN'S COLLECTION →
-</h3>
-
+<h3>WOMEN'S COLLECTION →</h3>
 </div>
 
 </div>
@@ -1492,13 +1015,8 @@ WOMEN'S COLLECTION →
 <div class="collection-model"></div>
 
 <div class="collection-info">
-
 <small>03</small>
-
-<h3>
-PERFORMANCE TEES →
-</h3>
-
+<h3>PERFORMANCE TEES →</h3>
 </div>
 
 </div>
@@ -1509,43 +1027,30 @@ PERFORMANCE TEES →
 <div class="collection-model"></div>
 
 <div class="collection-info">
-
 <small>04</small>
-
-<h3>
-HOODIES →
-</h3>
-
+<h3>HOODIES & SWEATSHIRTS →</h3>
 </div>
 
 </div>
-
 
 </div>
 
 </section>
 
 
-<!-- ================= PRODUCTS ================= -->
+<!-- PRODUCTS -->
 
 <section class="section" id="shop">
 
 <div class="section-heading">
 
 <div>
-
-<div class="overline">
-SHOP PLAYKISH
-</div>
-
-<h2>
-BEST SELLERS
-</h2>
-
+<div class="overline">SHOP PLAYKISH</div>
+<h2>BEST SELLERS</h2>
 </div>
 
 <div class="view">
-← &nbsp; →
+← &nbsp;&nbsp; →
 </div>
 
 </div>
@@ -1553,7 +1058,6 @@ BEST SELLERS
 
 <div class="product-grid">
 
-
 <div class="product">
 
 <div class="product-image">
@@ -1564,20 +1068,16 @@ BEST SELLERS
 
 <div class="product-info">
 
-<h3>
-PERFORMANCE TEE
-</h3>
+<h3>PERFORMANCE TEE</h3>
 
 <div class="price">
 ₹1,499
 </div>
 
 <div class="colors">
-
 <span class="color"></span>
-<span class="color white"></span>
-<span class="color grey"></span>
-
+<span class="color"></span>
+<span class="color"></span>
 </div>
 
 </div>
@@ -1589,29 +1089,22 @@ PERFORMANCE TEE
 
 <div class="product-image">
 
-<div
-class="product-shirt"
-style="background:linear-gradient(100deg,#ddd,#fff,#aaa)">
-</div>
+<div class="product-shirt" style="background:linear-gradient(100deg,#ddd,#fff,#aaa)"></div>
 
 </div>
 
 <div class="product-info">
 
-<h3>
-VELOCITY TEE
-</h3>
+<h3>VELOCITY TEE</h3>
 
 <div class="price">
 ₹1,499
 </div>
 
 <div class="colors">
-
-<span class="color white"></span>
-<span class="color grey"></span>
 <span class="color"></span>
-
+<span class="color"></span>
+<span class="color"></span>
 </div>
 
 </div>
@@ -1629,20 +1122,16 @@ VELOCITY TEE
 
 <div class="product-info">
 
-<h3>
-ENDURANCE HOODIE
-</h3>
+<h3>ENDURANCE HOODIE</h3>
 
 <div class="price">
 ₹2,499
 </div>
 
 <div class="colors">
-
 <span class="color"></span>
-<span class="color grey"></span>
-<span class="color white"></span>
-
+<span class="color"></span>
+<span class="color"></span>
 </div>
 
 </div>
@@ -1654,42 +1143,36 @@ ENDURANCE HOODIE
 
 <div class="product-image">
 
-<div
-class="product-shirt"
-style="height:120px">
+<div class="product-shirt"
+style="height:125px;background:linear-gradient(90deg,#111,#444,#111)">
 </div>
 
 </div>
 
 <div class="product-info">
 
-<h3>
-FLEX SHORTS
-</h3>
+<h3>FLEX SHORTS</h3>
 
 <div class="price">
 ₹1,999
 </div>
 
 <div class="colors">
-
 <span class="color"></span>
-<span class="color grey"></span>
-<span class="color white"></span>
-
+<span class="color"></span>
+<span class="color"></span>
 </div>
 
 </div>
 
 </div>
-
 
 </div>
 
 </section>
 
 
-<!-- ================= STORY ================= -->
+<!-- STORY -->
 
 <section class="story" id="story">
 
@@ -1702,23 +1185,17 @@ OUR STORY
 </div>
 
 <h2>
-
 BUILT FROM<br>
 A DIFFERENT<br>
 MINDSET.
-
 </h2>
 
 <p>
-
 PLAYKISH was born from a simple belief —
-every athlete deserves better gear.
-
-Better movement.
-Better performance.
-A brand that understands
-the grind and the dream.
-
+that every athlete deserves better gear.
+Better movement. Better performance.
+A brand that understands the grind,
+the discipline and the dream.
 </p>
 
 <a href="#" class="btn">
@@ -1730,7 +1207,7 @@ LEARN MORE →
 </section>
 
 
-<!-- ================= ATHLETE ================= -->
+<!-- ATHLETE -->
 
 <section class="athlete">
 
@@ -1741,18 +1218,14 @@ ATHLETE STORIES
 </div>
 
 <h2>
-
 REAL PEOPLE.<br>
 REAL JOURNEYS.
-
 </h2>
 
 <p>
-
 From local courts to bigger dreams —
-hear how PLAYKISH athletes
-are pushing their limits.
-
+hear how PLAYKISH athletes are pushing
+their limits every single day.
 </p>
 
 <a href="#" class="btn">
@@ -1761,12 +1234,12 @@ READ STORIES →
 
 </div>
 
-<div class="athlete-model"></div>
+<div class="athlete-silhouette"></div>
 
 </section>
 
 
-<!-- ================= WAITLIST ================= -->
+<!-- WAITLIST -->
 
 <section class="waitlist">
 
@@ -1791,7 +1264,7 @@ placeholder="Enter your email address"
 required
 >
 
-<button type="submit">
+<button>
 JOIN WAITLIST →
 </button>
 
@@ -1800,7 +1273,7 @@ JOIN WAITLIST →
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -1817,60 +1290,274 @@ SHOP &nbsp;&nbsp; ABOUT &nbsp;&nbsp; CONTACT &nbsp;&nbsp; PRIVACY
 
 <script>
 
-const form = document.querySelector(".email");
+/* =================================
+3D HERO — THREE.JS
+================================= */
 
-form.addEventListener("submit", function(event){
+const canvas=document.getElementById("threeCanvas");
 
-  event.preventDefault();
+const scene=new THREE.Scene();
 
-  const button = form.querySelector("button");
-
-  button.textContent = "YOU'RE ON THE LIST ✓";
-
-});
-
-
-/* 3D mouse movement */
-
-const cards = document.querySelectorAll(
-  ".collection, .product"
+const camera=new THREE.PerspectiveCamera(
+55,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
 );
 
-cards.forEach(function(card){
+camera.position.z=7;
 
-  card.addEventListener("mousemove",function(event){
+const renderer=new THREE.WebGLRenderer({
+canvas:canvas,
+alpha:true,
+antialias:true
+});
 
-    const box = card.getBoundingClientRect();
+renderer.setPixelRatio(
+Math.min(window.devicePixelRatio,2)
+);
 
-    const x =
-      event.clientX - box.left;
-
-    const y =
-      event.clientY - box.top;
-
-    const rotateY =
-      ((x / box.width) - 0.5) * 10;
-
-    const rotateX =
-      ((y / box.height) - 0.5) * -10;
-
-    card.style.transform =
-      "perspective(800px) rotateX(" +
-      rotateX +
-      "deg) rotateY(" +
-      rotateY +
-      "deg) translateY(-5px)";
-
-  });
+renderer.setSize(
+window.innerWidth,
+window.innerHeight
+);
 
 
-  card.addEventListener("mouseleave",function(){
+/* 3D GOLD RING */
 
-    card.style.transform = "";
+const geometry=new THREE.TorusGeometry(
+2.2,
+0.035,
+16,
+120
+);
 
-  });
+const material=new THREE.MeshBasicMaterial({
+color:0xd8bd82,
+transparent:true,
+opacity:.65
+});
+
+const ring=new THREE.Mesh(
+geometry,
+material
+);
+
+ring.position.set(2.2,.2,0);
+
+scene.add(ring);
+
+
+/* SECOND RING */
+
+const geometry2=new THREE.TorusGeometry(
+2.7,
+0.012,
+12,
+100
+);
+
+const material2=new THREE.MeshBasicMaterial({
+color:0xffffff,
+transparent:true,
+opacity:.15
+});
+
+const ring2=new THREE.Mesh(
+geometry2,
+material2
+);
+
+ring2.position.set(2.2,.2,-.2);
+
+scene.add(ring2);
+
+
+/* PARTICLES */
+
+const particleGeometry=new THREE.BufferGeometry();
+
+const particleCount=700;
+
+const positions=new Float32Array(
+particleCount*3
+);
+
+for(let i=0;i<particleCount*3;i++){
+
+positions[i]=(Math.random()-.5)*14;
+
+}
+
+particleGeometry.setAttribute(
+"position",
+new THREE.BufferAttribute(
+positions,
+3
+)
+);
+
+const particleMaterial=new THREE.PointsMaterial({
+color:0xd8bd82,
+size:.018,
+transparent:true,
+opacity:.7
+});
+
+const particles=new THREE.Points(
+particleGeometry,
+particleMaterial
+);
+
+scene.add(particles);
+
+
+/* MOUSE */
+
+let mouseX=0;
+let mouseY=0;
+
+window.addEventListener(
+"mousemove",
+e=>{
+
+mouseX=
+(e.clientX/window.innerWidth-.5);
+
+mouseY=
+(e.clientY/window.innerHeight-.5);
+
+}
+);
+
+
+/* ANIMATION */
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+ring.rotation.x+=.002;
+ring.rotation.y+=.004;
+
+ring2.rotation.x-=.001;
+ring2.rotation.y+=.002;
+
+particles.rotation.y+=.00025;
+
+ring.position.x=
+2.2 + mouseX*.4;
+
+ring.position.y=
+.2 - mouseY*.25;
+
+ring2.position.x=
+2.2 + mouseX*.2;
+
+camera.position.x+=
+(mouseX*.25-camera.position.x)*.03;
+
+camera.position.y+=
+(-mouseY*.15-camera.position.y)*.03;
+
+camera.lookAt(
+new THREE.Vector3(0,0,0)
+);
+
+renderer.render(
+scene,
+camera
+);
+
+}
+
+animate();
+
+
+/* RESIZE */
+
+window.addEventListener(
+"resize",
+()=>{
+
+camera.aspect=
+window.innerWidth/window.innerHeight;
+
+camera.updateProjectionMatrix();
+
+renderer.setSize(
+window.innerWidth,
+window.innerHeight
+);
+
+}
+);
+
+
+/* PRODUCT 3D TILT */
+
+document
+.querySelectorAll(".product,.collection")
+.forEach(card=>{
+
+card.addEventListener(
+"mousemove",
+e=>{
+
+const rect=
+card.getBoundingClientRect();
+
+const x=
+e.clientX-rect.left;
+
+const y=
+e.clientY-rect.top;
+
+const rotateY=
+(x/rect.width-.5)*10;
+
+const rotateX=
+-(y/rect.height-.5)*10;
+
+card.style.transform=
+`perspective(900px)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+translateY(-4px)`;
+
+}
+);
+
+card.addEventListener(
+"mouseleave",
+()=>{
+
+card.style.transform="";
+
+}
+);
 
 });
+
+
+/* WAITLIST */
+
+document
+.querySelector(".email")
+.addEventListener(
+"submit",
+e=>{
+
+e.preventDefault();
+
+const button=
+e.target.querySelector("button");
+
+button.innerText=
+"YOU'RE ON THE LIST ✓";
+
+}
+);
 
 </script>
 
