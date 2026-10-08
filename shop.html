@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shop | PLAYKISH</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* HEADER */
+
+header{
+    height:78px;
+    border-bottom:1px solid #242424;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(5,5,5,.92);
+    backdrop-filter:blur(15px);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo-mark{
+    color:#dfc27b;
+    font-size:34px;
+    font-weight:900;
+    font-style:italic;
+    transform:skew(-12deg);
+}
+
+.logo-text{
+    font-size:22px;
+    letter-spacing:5px;
+    font-weight:600;
+}
+
+nav{
+    display:flex;
+    gap:38px;
+    font-size:13px;
+}
+
+nav a{
+    opacity:.75;
+    transition:.3s;
+}
+
+nav a:hover,
+nav .active{
+    opacity:1;
+    color:#dfc27b;
+}
+
+.header-icons{
+    display:flex;
+    gap:22px;
+    font-size:22px;
+}
+
+.icon{
+    cursor:pointer;
+}
+
+/* HERO */
+
+.shop-hero{
+    min-height:420px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:80px 6%;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 75% 45%,rgba(223,194,123,.15),transparent 28%),
+        linear-gradient(110deg,#050505,#111 60%,#050505);
+}
+
+.shop-hero:after{
+    content:"";
+    position:absolute;
+    width:550px;
+    height:550px;
+    right:-220px;
+    top:-100px;
+    border:1px solid rgba(223,194,123,.25);
+    border-radius:50%;
+}
+
+.kicker{
+    color:#dfc27b;
+    font-size:11px;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(50px,8vw,100px);
+    line-height:.9;
+    letter-spacing:-4px;
+    max-width:800px;
+}
+
+.hero-gold{
+    color:#dfc27b;
+}
+
+.hero-description{
+    margin-top:28px;
+    color:#999;
+    max-width:520px;
+    line-height:1.7;
+}
+
+/* FILTER BAR */
+
+.shop-controls{
+    padding:35px 6%;
+    border-bottom:1px solid #222;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.filters{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.filter{
+    background:transparent;
+    color:#aaa;
+    border:1px solid #333;
+    padding:12px 20px;
+    cursor:pointer;
+    transition:.3s;
+    text-transform:uppercase;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+.filter:hover,
+.filter.active{
+    background:#dfc27b;
+    color:#080808;
+    border-color:#dfc27b;
+}
+
+.sort{
+    background:#0d0d0d;
+    border:1px solid #333;
+    color:#aaa;
+    padding:12px 18px;
+}
+
+/* PRODUCTS */
+
+.products-section{
+    padding:60px 6% 100px;
+}
+
+.product-count{
+    color:#777;
+    font-size:12px;
+    margin-bottom:30px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+}
+
+.product{
+    background:#0c0c0c;
+    border:1px solid #202020;
+    position:relative;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.product:hover{
+    transform:translateY(-8px);
+    border-color:#76643d;
+    box-shadow:0 20px 50px rgba(0,0,0,.6);
+}
+
+.product-image{
+    height:360px;
+    background:
+        radial-gradient(circle at 50% 40%,#303030,#111 48%,#050505 80%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image:before{
+    content:"";
+    width:150px;
+    height:270px;
+    background:linear-gradient(100deg,#080808,#222,#080808);
+    border-radius:35px 35px 12px 12px;
+    box-shadow:0 20px 50px #000;
+    transition:.5s;
+}
+
+.product:hover .product-image:before{
+    transform:scale(1.07) rotate(-2deg);
+}
+
+.product-image:after{
+    content:"P";
+    position:absolute;
+    font-size:28px;
+    font-weight:900;
+    color:#dfc27b;
+    font-style:italic;
+}
+
+.badge{
+    position:absolute;
+    top:15px;
+    left:15px;
+    background:#dfc27b;
+    color:#050505;
+    padding:7px 10px;
+    font-size:9px;
+    font-weight:bold;
+    letter-spacing:1px;
+    z-index:2;
+}
+
+.wishlist{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:36px;
+    height:36px;
+    border:1px solid #444;
+    border-radius:50%;
+    background:#090909;
+    color:#fff;
+    cursor:pointer;
+    z-index:2;
+}
+
+.wishlist:hover{
+    color:#dfc27b;
+    border-color:#dfc27b;
+}
+
+.product-info{
+    padding:20px;
+}
+
+.product-category{
+    color:#777;
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.product-name{
+    font-size:17px;
+    margin:9px 0;
+}
+
+.price{
+    color:#dfc27b;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.product-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.sizes{
+    color:#777;
+    font-size:10px;
+}
+
+.add-cart{
+    border:1px solid #dfc27b;
+    background:transparent;
+    color:#dfc27b;
+    padding:9px 13px;
+    cursor:pointer;
+    font-size:10px;
+    transition:.3s;
+}
+
+.add-cart:hover{
+    background:#dfc27b;
+    color:#050505;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #222;
+    padding:50px 6%;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.footer-logo{
+    font-size:20px;
+    letter-spacing:4px;
+}
+
+.footer-text{
+    color:#666;
+    font-size:11px;
+    margin-top:12px;
+}
+
+.footer-links{
+    display:flex;
+    gap:25px;
+    color:#777;
+    font-size:11px;
+}
+
+/* CART */
+
+.cart-message{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#dfc27b;
+    color:#050505;
+    padding:15px 22px;
+    font-weight:bold;
+    transform:translateY(100px);
+    transition:.4s;
+    z-index:200;
+}
+
+.cart-message.show{
+    transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    nav{
+        display:none;
+    }
+
+    .header-icons{
+        gap:15px;
+    }
+
+    .logo-text{
+        font-size:18px;
+    }
+
+    .shop-hero{
+        min-height:500px;
+        padding:70px 7%;
+    }
+
+    h1{
+        font-size:58px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .product-image{
+        height:270px;
+    }
+
+    .product-info{
+        padding:14px;
+    }
+
+    .product-name{
+        font-size:14px;
+    }
+}
+
+@media(max-width:520px){
+
+    header{
+        height:68px;
+        padding:0 5%;
+    }
+
+    .logo-mark{
+        font-size:27px;
+    }
+
+    .logo-text{
+        font-size:16px;
+        letter-spacing:3px;
+    }
+
+    .shop-hero{
+        min-height:480px;
+    }
+
+    h1{
+        font-size:49px;
+        letter-spacing:-2px;
+    }
+
+    .hero-description{
+        font-size:14px;
+    }
+
+    .shop-controls{
+        padding:25px 5%;
+    }
+
+    .filters{
+        width:100%;
+    }
+
+    .filter{
+        padding:10px 13px;
+    }
+
+    .sort{
+        width:100%;
+    }
+
+    .products-section{
+        padding:40px 5% 70px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .product-image{
+        height:220px;
+    }
+
+    .product-image:before{
+        width:100px;
+        height:170px;
+    }
+
+    .product-image:after{
+        font-size:20px;
+    }
+
+    .product-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .add-cart{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="logo">
+    <div class="logo-mark">P</div>
+    <div class="logo-text">PLAYKISH</div>
+</a>
+
+<nav>
+    <a href="index.html">HOME</a>
+    <a href="shop.html" class="active">SHOP</a>
+    <a href="#">COLLECTIONS</a>
+    <a href="#">ABOUT</a>
+</nav>
+
+<div class="header-icons">
+    <span class="icon">⌕</span>
+    <span class="icon">♙</span>
+    <span class="icon">□</span>
+</div>
+
+</header>
+
+
+<section class="shop-hero">
+
+<div class="kicker">PLAYKISH PERFORMANCE SYSTEM</div>
+
+<h1>
+    GEAR FOR<br>
+    <span class="hero-gold">ATHLETES.</span>
+</h1>
+
+<p class="hero-description">
+    Engineered performance sportswear built for movement,
+    training and the athletes who refuse to stay ordinary.
+</p>
+
+</section>
+
+
+<section class="shop-controls">
+
+<div class="filters">
+
+<button class="filter active" onclick="filterProducts('all',this)">
+ALL
+</button>
+
+<button class="filter" onclick="filterProducts('men',this)">
+MEN
+</button>
+
+<button class="filter" onclick="filterProducts('women',this)">
+WOMEN
+</button>
+
+<button class="filter" onclick="filterProducts('tees',this)">
+PERFORMANCE TEES
+</button>
+
+<button class="filter" onclick="filterProducts('hoodies',this)">
+HOODIES
+</button>
+
+<button class="filter" onclick="filterProducts('shorts',this)">
+SHORTS
+</button>
+
+</div>
+
+<select class="sort" onchange="sortProducts(this.value)">
+<option value="featured">Featured</option>
+<option value="low">Price: Low to High</option>
+<option value="high">Price: High to Low</option>
+</select>
+
+</section>
+
+
+<section class="products-section">
+
+<div class="product-count">
+SHOWING <span id="count">8</span> PRODUCTS
+</div>
+
+<div class="products" id="products">
+
+
+<!-- PRODUCT 1 -->
+
+<div class="product" data-category="men tees" data-price="1499">
+
+<div class="product-image">
+
+<span class="badge">BESTSELLER</span>
+
+<button class="wishlist" onclick="wishlist(this)">♡</button>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">MEN / PERFORMANCE</div>
+
+<div class="product-name">
+PLAYKISH PERFORMANCE TEE
+</div>
+
+<div class="price">
+₹1,499
+</div>
+
+<div class="product-bottom">
+
+<div class="sizes">
+S &nbsp; M &nbsp; L &nbsp; XL
+</div>
+
+<button class="add-cart" onclick="addCart('Performance Tee')">
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- PRODUCT 2 -->
+
+<div class="product" data-category="women tees" data-price="1499">
+
+<div class="product-image">
+
+<button class="wishlist" onclick="wishlist(this)">♡</button>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">WOMEN / PERFORMANCE</div>
+
+<div class="product-name">
+VELOCITY TEE
+</div>
+
+<div class="price">
+₹1,499
+</div>
+
+<div class="product-bottom">
+
+<div class="sizes">
+XS &nbsp; S &nbsp; M &nbsp; L
+</div>
+
+<button class="add-cart" onclick="addCart('Velocity Tee')">
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- PRODUCT 3 -->
+
+<div class="product" data-category="men hoodies" data-price="2499">
+
+<div class="product-image">
+
+<button class="wishlist" onclick="wishlist(this)">♡</button>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">MEN / TRAINING</div>
+
+<div class="product-name">
+ENDURANCE HOODIE
+</div>
+
+<div class="price">
+₹2,499
+</div>
+
+<div class="product-bottom">
+
+<div class="sizes">
+S &nbsp; M &nbsp; L &nbsp; XL
+</div>
+
+<button class="add-cart" onclick="addCart('Endurance Hoodie')">
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- PRODUCT 4 -->
+
+<div class="product" data-category="men shorts" data-price="1999">
+
+<div class="product-image">
+
+<button class="wishlist" onclick="wishlist(this)">♡</button>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">MEN / TRAINING</div>
+
+<div class="product-name">
+FLEX TRAINING SHORTS
+</div>
+
+<div class="price">
+₹1,999
+</div>
+
+<div class="product-bottom">
+
+<div class="sizes">
+S &nbsp; M &nbsp; L &nbsp; XL
+</div>
+
+<button class="add-cart" onclick="addCart('Flex Training Shorts')">
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- PRODUCT 5 -->
+
+<div class="product" data-category="men tees" data-price="1599">
+
+<div class="product-image">
+
+<button class="wishlist" onclick="wishlist(this)">♡</button>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">MEN / PERFORMANCE</div>
+
+<div class="product-name">
+AERO PERFORMANCE TEE
+</div>
+
+<div class="price">
+₹1,599
+</div>
+
+<div class="product-bottom">
+
+<div class="sizes">
+S &nbsp; M &nbsp; L &nbsp; XL
+</div>
+
+<button class="add-cart" onclick="addCart('Aero Performance Tee')">
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- PRODUCT 6 -->
+
+<div class="product" data-category="women tees" data-price="1599">
+
+<div class="product-image">
+
+<button class="wishlist" onclick="wishlist(this)">♡</button>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">WOMEN / PERFORMANCE</div>
+
+<div class="product-name">
+MOTION PERFORMANCE TEE
+</div>
+
+<div class="price">
+₹1,599
+</div>
+
+<div class="product-bottom">
+
+<div class="sizes">
+XS &nbsp; S &nbsp; M &nbsp; L
+</div>
+
+<button class="add-cart" onclick="addCart('Motion Performance Tee')">
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- PRODUCT 7 -->
+
+<div class="product" data-category="women hoodies" data-price="2499">
+
+<div class="product-image">
+
+<button class="wishlist" onclick="wishlist(this)">♡</button>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">WOMEN / TRAINING</div>
+
+<div class="product-name">
+APEX TRAINING HOODIE
+</div>
+
+<div class="price">
+₹2,499
+</div>
+
+<div class="product-bottom">
+
+<div class="sizes">
+XS &nbsp; S &nbsp; M &nbsp; L
+</div>
+
+<button class="add-cart" onclick="addCart('Apex Training Hoodie')">
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- PRODUCT 8 -->
+
+<div class="product" data-category="women shorts" data-price="1799">
+
+<div class="product-image">
+
+<button class="wishlist" onclick="wishlist(this)">♡</button>
+
+</div>
+
+<div class="product-info">
+
+<div class="product-category">WOMEN / TRAINING</div>
+
+<div class="product-name">
+MOTION FLEX SHORTS
+</div>
+
+<div class="price">
+₹1,799
+</div>
+
+<div class="product-bottom">
+
+<div class="sizes">
+XS &nbsp; S &nbsp; M &nbsp; L
+</div>
+
+<button class="add-cart" onclick="addCart('Motion Flex Shorts')">
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+</div>
+</section>
+
+
+<footer>
+
+<div>
+
+<div class="footer-logo">
+PLAYKISH
+</div>
+
+<div class="footer-text">
+BUILT TO PERFORM. MADE TO MOVE.
+</div>
+
+</div>
+
+<div class="footer-links">
+<a href="#">Instagram</a>
+<a href="#">Contact</a>
+<a href="#">Privacy</a>
+<a href="#">Terms</a>
+</div>
+
+</footer>
+
+
+<div class="cart-message" id="cartMessage">
+ADDED TO CART ✓
+</div>
+
+
+<script>
+
+function filterProducts(category,button){
+
+    const products =
+        document.querySelectorAll(".product");
+
+    let visible = 0;
+
+    document.querySelectorAll(".filter")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    products.forEach(product => {
+
+        const categories =
+            product.dataset.category;
+
+        if(
+            category === "all" ||
+            categories.includes(category)
+        ){
+            product.style.display = "";
+            visible++;
+        }else{
+            product.style.display = "none";
+        }
+
+    });
+
+    document.getElementById("count")
+        .textContent = visible;
+}
+
+
+function addCart(name){
+
+    const message =
+        document.getElementById("cartMessage");
+
+    message.textContent =
+        name.toUpperCase() + " ADDED TO CART ✓";
+
+    message.classList.add("show");
+
+    setTimeout(() => {
+        message.classList.remove("show");
+    },2500);
+}
+
+
+function wishlist(button){
+
+    if(button.textContent === "♡"){
+        button.textContent = "♥";
+        button.style.color = "#dfc27b";
+        button.style.borderColor = "#dfc27b";
+    }else{
+        button.textContent = "♡";
+        button.style.color = "#fff";
+        button.style.borderColor = "#444";
+    }
+
+}
+
+
+function sortProducts(type){
+
+    const container =
+        document.getElementById("products");
+
+    const products =
+        [...container.querySelectorAll(".product")];
+
+    if(type === "low"){
+
+        products.sort(
+            (a,b) =>
+            Number(a.dataset.price) -
+            Number(b.dataset.price)
+        );
+
+    }
+
+    if(type === "high"){
+
+        products.sort(
+            (a,b) =>
+            Number(b.dataset.price) -
+            Number(a.dataset.price)
+        );
+
+    }
+
+    products.forEach(product =>
+        container.appendChild(product)
+    );
+
+}
+
+</script>
+
+</body>
+</html>
