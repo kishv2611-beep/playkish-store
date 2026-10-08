@@ -3,1391 +3,1241 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PLAYKISH — Performance Sportswear</title>
 
+<meta name="description" content="PLAYKISH — Premium performance sportswear built to perform and made to move.">
+
 <style>
+
+/* ================================
+   PLAYKISH — GLOBAL
+================================ */
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  background:#050505;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
+    background:#050505;
+    color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+:root{
+    --gold:#d9bb78;
+    --gold-light:#efd596;
+    --black:#050505;
+    --dark:#0b0b0b;
+    --grey:#a7a7a7;
+    --border:rgba(255,255,255,.12);
 }
 
-/* =========================
-   PLAYKISH LOGO
-========================= */
+/* ================================
+   SCROLLBAR
+================================ */
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  text-decoration:none;
+::-webkit-scrollbar{
+    width:7px;
 }
 
-.playkish-logo{
-  width:58px;
-  height:45px;
-  flex-shrink:0;
+::-webkit-scrollbar-track{
+    background:#050505;
 }
 
-.playkish-logo svg{
-  width:100%;
-  height:100%;
-  display:block;
+::-webkit-scrollbar-thumb{
+    background:var(--gold);
 }
 
-.playkish-word{
-  color:#f4f4f4;
-  font-family:Arial,Helvetica,sans-serif;
-  font-size:20px;
-  font-weight:400;
-  letter-spacing:4px;
-  white-space:nowrap;
-}
-
-/* =========================
+/* ================================
    HEADER
-========================= */
+================================ */
 
 header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:72px;
-  padding:0 5.5%;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:76px;
+    z-index:1000;
 
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-  z-index:999;
+    padding:0 5%;
 
-  background:rgba(3,3,3,.88);
-  backdrop-filter:blur(18px);
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(18px);
 
-  border-bottom:1px solid rgba(255,255,255,.1);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:white;
+}
+
+.logo-mark{
+    width:58px;
+    height:42px;
+    position:relative;
+}
+
+.logo-mark svg{
+    width:100%;
+    height:100%;
+}
+
+.logo-text{
+    font-size:22px;
+    letter-spacing:6px;
+    font-weight:500;
 }
 
 nav{
-  display:flex;
-  align-items:center;
-  gap:36px;
+    display:flex;
+    gap:42px;
 }
 
 nav a{
-  position:relative;
-
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:1.5px;
-
-  color:#eee;
-
-  transition:.3s;
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    transition:.3s;
 }
 
 nav a:hover{
-  color:#d8bd82;
+    color:var(--gold);
 }
 
-nav a:first-child{
-  color:#d8bd82;
-}
-
-nav a:first-child::after{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:-12px;
-
-  height:1px;
-
-  background:#d8bd82;
-}
-
-.icons{
-  display:flex;
-  align-items:center;
-  gap:20px;
+.header-icons{
+    display:flex;
+    align-items:center;
+    gap:22px;
 }
 
 .icon{
-  width:20px;
-  height:20px;
-
-  color:#fff;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:18px;
+    width:22px;
+    height:22px;
+    cursor:pointer;
+    transition:.3s;
 }
 
-/* =========================
+.icon:hover{
+    transform:scale(1.15);
+    color:var(--gold);
+}
+
+.cart{
+    position:relative;
+}
+
+.cart-count{
+    position:absolute;
+    top:-9px;
+    right:-9px;
+
+    width:16px;
+    height:16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--gold);
+    color:#000;
+
+    font-size:9px;
+    font-weight:bold;
+}
+
+.menu{
+    display:none;
+}
+
+/* ================================
    HERO
-========================= */
+================================ */
 
 .hero{
-  min-height:760px;
-  height:100vh;
+    min-height:100vh;
+    padding:150px 6% 80px;
 
-  position:relative;
+    position:relative;
+    overflow:hidden;
 
-  display:flex;
-  align-items:center;
-
-  overflow:hidden;
-
-  background:
-    radial-gradient(
-      circle at 72% 50%,
-      #20201c 0%,
-      #0d0e0d 30%,
-      #050606 62%,
-      #020202 100%
-    );
+    display:flex;
+    align-items:center;
 }
 
 .hero::before{
-  content:"";
+    content:"";
+    position:absolute;
 
-  position:absolute;
+    width:700px;
+    height:700px;
 
-  inset:0;
+    right:-220px;
+    top:100px;
 
-  background:
-    linear-gradient(
-      110deg,
-      rgba(0,0,0,.95) 0%,
-      rgba(0,0,0,.75) 40%,
-      rgba(0,0,0,.1) 75%,
-      rgba(0,0,0,.65) 100%
+    background:radial-gradient(
+        circle,
+        rgba(217,187,120,.15),
+        transparent 65%
     );
 
-  z-index:1;
+    filter:blur(20px);
 }
-
-/* subtle light */
-
-.hero::after{
-  content:"";
-
-  position:absolute;
-
-  width:500px;
-  height:500px;
-
-  right:-120px;
-  top:-100px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,255,255,.18),
-      transparent 65%
-    );
-
-  filter:blur(20px);
-
-  z-index:1;
-}
-
-/* =========================
-   3D HERO RING
-========================= */
-
-.hero-ring{
-  position:absolute;
-
-  right:4%;
-  top:50%;
-
-  width:530px;
-  height:530px;
-
-  border-radius:50%;
-
-  border:1px solid rgba(216,189,130,.35);
-
-  transform:
-    translateY(-50%)
-    perspective(800px)
-    rotateX(67deg)
-    rotateZ(-13deg);
-
-  box-shadow:
-    0 0 80px rgba(216,189,130,.06),
-    inset 0 0 60px rgba(216,189,130,.04);
-
-  z-index:2;
-
-  animation:floatRing 8s ease-in-out infinite;
-}
-
-.hero-ring::before{
-  content:"";
-
-  position:absolute;
-
-  inset:35px;
-
-  border-radius:50%;
-
-  border:1px solid rgba(255,255,255,.1);
-}
-
-.hero-ring::after{
-  content:"";
-
-  position:absolute;
-
-  width:8px;
-  height:8px;
-
-  border-radius:50%;
-
-  background:#d8bd82;
-
-  box-shadow:0 0 20px #d8bd82;
-
-  top:50%;
-  left:50%;
-
-  animation:orbit 5s linear infinite;
-}
-
-@keyframes floatRing{
-
-  0%,100%{
-    transform:
-      translateY(-50%)
-      perspective(800px)
-      rotateX(67deg)
-      rotateZ(-13deg);
-  }
-
-  50%{
-    transform:
-      translateY(-54%)
-      perspective(800px)
-      rotateX(67deg)
-      rotateZ(-8deg);
-  }
-}
-
-@keyframes orbit{
-
-  from{
-    transform:rotate(0deg) translateX(250px);
-  }
-
-  to{
-    transform:rotate(360deg) translateX(250px);
-  }
-}
-
-/* =========================
-   FAKE 3D ATHLETE
-========================= */
-
-.athlete{
-  position:absolute;
-
-  right:13%;
-  bottom:-20px;
-
-  width:390px;
-  height:590px;
-
-  z-index:4;
-
-  transform:
-    perspective(1000px)
-    rotateY(-12deg);
-
-  transform-style:preserve-3d;
-}
-
-/* head */
-
-.athlete-head{
-  position:absolute;
-
-  width:110px;
-  height:125px;
-
-  top:20px;
-  left:140px;
-
-  border-radius:50%;
-
-  background:
-    linear-gradient(
-      110deg,
-      #111,
-      #7c7c7c,
-      #171717
-    );
-
-  box-shadow:
-    25px 25px 35px #000;
-
-  transform:translateZ(60px);
-}
-
-/* neck */
-
-.athlete-neck{
-  position:absolute;
-
-  width:65px;
-  height:90px;
-
-  top:105px;
-  left:164px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #111,
-      #666,
-      #111
-    );
-
-  transform:translateZ(40px);
-}
-
-/* body */
-
-.athlete-body{
-  position:absolute;
-
-  width:285px;
-  height:420px;
-
-  left:65px;
-  top:130px;
-
-  background:
-    linear-gradient(
-      100deg,
-      #070707 0%,
-      #303030 35%,
-      #111 60%,
-      #555 80%,
-      #090909 100%
-    );
-
-  clip-path:polygon(
-    35% 0,
-    65% 0,
-    82% 13%,
-    100% 100%,
-    0 100%,
-    18% 13%
-  );
-
-  box-shadow:
-    35px 35px 60px #000;
-
-  transform:translateZ(40px);
-}
-
-/* shoulder */
-
-.athlete-body::before{
-  content:"";
-
-  position:absolute;
-
-  width:100px;
-  height:310px;
-
-  right:-55px;
-  top:15px;
-
-  border-radius:50%;
-
-  background:
-    linear-gradient(
-      90deg,
-      #111,
-      #777,
-      #151515
-    );
-
-  transform:rotate(-9deg);
-}
-
-/* PLAYKISH logo on shirt */
-
-.athlete-body::after{
-  content:"P";
-
-  position:absolute;
-
-  left:110px;
-  top:58px;
-
-  font-size:31px;
-  font-weight:900;
-
-  font-style:italic;
-
-  color:#d8bd82;
-
-  transform:skew(-10deg);
-}
-
-/* =========================
-   HERO CONTENT
-========================= */
 
 .hero-content{
-  position:relative;
-
-  z-index:10;
-
-  width:55%;
-
-  padding-left:6%;
+    width:52%;
+    position:relative;
+    z-index:3;
 }
 
-.kicker{
-  color:#d8bd82;
-
-  font-size:9px;
-
-  letter-spacing:5px;
-
-  margin-bottom:18px;
+.eyebrow{
+    color:var(--gold);
+    letter-spacing:7px;
+    font-size:12px;
+    margin-bottom:25px;
 }
 
 .hero h1{
-  font-size:clamp(55px,7vw,92px);
-
-  line-height:.9;
-
-  letter-spacing:-4px;
-
-  font-weight:900;
+    font-size:clamp(55px,7vw,105px);
+    line-height:.9;
+    letter-spacing:-4px;
+    font-weight:900;
+    text-transform:uppercase;
 }
 
 .hero h1 span{
-  color:#d8bd82;
+    display:block;
+    color:var(--gold);
 }
 
-.description{
-  max-width:410px;
+.hero-description{
+    max-width:500px;
+    margin-top:35px;
 
-  color:#999;
-
-  font-size:13px;
-
-  line-height:1.7;
-
-  margin-top:25px;
+    color:#a8a8a8;
+    font-size:16px;
+    line-height:1.7;
 }
 
 .buttons{
-  display:flex;
-
-  gap:14px;
-
-  margin-top:30px;
+    display:flex;
+    gap:15px;
+    margin-top:38px;
 }
 
 .btn{
-  display:inline-block;
+    padding:17px 30px;
+    border:1px solid var(--gold);
 
-  padding:15px 26px;
+    text-decoration:none;
+    color:#fff;
 
-  border:1px solid #d8bd82;
+    font-weight:bold;
+    font-size:12px;
+    letter-spacing:2px;
 
-  font-size:9px;
-
-  font-weight:800;
-
-  letter-spacing:1.5px;
-
-  transition:.3s;
+    transition:.35s;
 }
 
 .btn-primary{
-  background:#d8bd82;
-
-  color:#050505;
+    background:var(--gold);
+    color:#000;
 }
 
 .btn:hover{
-  transform:translateY(-4px);
-
-  box-shadow:
-    0 12px 30px rgba(216,189,130,.15);
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(217,187,120,.18);
 }
 
-.hero-note{
-  position:absolute;
-
-  right:7%;
-  top:48%;
-
-  z-index:10;
-
-  font-family:cursive;
-
-  font-size:23px;
-
-  line-height:1;
-
-  color:#eee;
-
-  transform:rotate(-9deg);
+.btn-secondary:hover{
+    background:var(--gold);
+    color:#000;
 }
 
-/* =========================
+/* ================================
+   3D PRODUCT
+================================ */
+
+.hero-visual{
+    position:absolute;
+
+    right:5%;
+    top:15%;
+
+    width:48%;
+    height:75%;
+
+    perspective:1200px;
+}
+
+.product-3d{
+    position:absolute;
+
+    width:310px;
+    height:450px;
+
+    right:17%;
+    top:10%;
+
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #252525,
+            #090909 50%,
+            #181818
+        );
+
+    transform:
+        rotateY(-18deg)
+        rotateX(5deg)
+        rotateZ(3deg);
+
+    box-shadow:
+        -30px 40px 80px rgba(0,0,0,.9),
+        inset 10px 10px 40px rgba(255,255,255,.04);
+
+    transition:1s;
+
+    animation:float 5s ease-in-out infinite;
+}
+
+.hero-visual:hover .product-3d{
+    transform:
+        rotateY(-5deg)
+        rotateX(0deg)
+        rotateZ(0deg)
+        translateY(-15px);
+}
+
+.product-3d::before{
+    content:"";
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            rgba(255,255,255,.06),
+            transparent 60%
+        );
+}
+
+.product-logo{
+    position:absolute;
+
+    left:50%;
+    top:45%;
+
+    transform:translate(-50%,-50%);
+
+    color:var(--gold);
+}
+
+.product-logo svg{
+    width:100px;
+    height:80px;
+}
+
+.product-label{
+    position:absolute;
+
+    bottom:35px;
+    width:100%;
+
+    text-align:center;
+
+    font-size:11px;
+    letter-spacing:5px;
+    color:#aaa;
+}
+
+.orbit{
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    border:1px solid rgba(217,187,120,.2);
+    border-radius:50%;
+
+    right:-60px;
+    top:0;
+
+    transform:rotateX(68deg) rotateZ(-15deg);
+}
+
+.orbit.two{
+    width:500px;
+    height:500px;
+
+    right:30px;
+    top:80px;
+
+    border-color:rgba(255,255,255,.08);
+}
+
+@keyframes float{
+    0%,100%{
+        transform:
+            rotateY(-18deg)
+            rotateX(5deg)
+            rotateZ(3deg)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            rotateY(-18deg)
+            rotateX(5deg)
+            rotateZ(3deg)
+            translateY(-18px);
+    }
+}
+
+/* ================================
    FEATURES
-========================= */
+================================ */
 
 .features{
-  display:grid;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
 
-  grid-template-columns:repeat(4,1fr);
-
-  border-top:1px solid #222;
-  border-bottom:1px solid #222;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
 .feature{
-  min-height:78px;
+    padding:35px 30px;
 
-  padding:20px 25px;
+    border-right:1px solid var(--border);
 
-  display:flex;
-
-  align-items:center;
-
-  gap:15px;
-
-  border-right:1px solid #222;
+    transition:.4s;
 }
 
 .feature:last-child{
-  border-right:none;
+    border-right:none;
+}
+
+.feature:hover{
+    background:#0d0d0d;
 }
 
 .feature-icon{
-  color:#d8bd82;
-
-  font-size:25px;
+    font-size:28px;
+    color:var(--gold);
+    margin-bottom:17px;
 }
 
-.feature h4{
-  font-size:9px;
-
-  letter-spacing:1.2px;
-
-  margin-bottom:5px;
+.feature h3{
+    font-size:12px;
+    letter-spacing:2px;
 }
 
 .feature p{
-  color:#666;
-
-  font-size:8px;
+    color:#777;
+    font-size:11px;
+    margin-top:8px;
 }
 
-/* =========================
-   SECTION
-========================= */
+/* ================================
+   SECTIONS
+================================ */
 
-.section{
-  padding:85px 5%;
+section{
+    padding:100px 5%;
 }
 
-.heading{
-  display:flex;
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
 
-  align-items:end;
-
-  justify-content:space-between;
-
-  margin-bottom:28px;
+    margin-bottom:40px;
 }
 
-.overline{
-  color:#d8bd82;
-
-  font-size:8px;
-
-  letter-spacing:5px;
-
-  margin-bottom:9px;
+.small-title{
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:5px;
+    margin-bottom:12px;
 }
 
-.heading h2{
-  font-size:34px;
-
-  letter-spacing:1px;
+.section-heading h2{
+    font-size:42px;
+    text-transform:uppercase;
+    letter-spacing:-1px;
 }
 
-.view{
-  font-size:9px;
-
-  letter-spacing:2px;
+.view-all{
+    color:var(--gold);
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:2px;
 }
 
-/* =========================
+/* ================================
    COLLECTIONS
-========================= */
+================================ */
 
-.collection-grid{
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:16px;
-
-  perspective:1200px;
+.collections{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
 }
 
 .collection{
-  position:relative;
+    height:390px;
 
-  height:350px;
+    position:relative;
+    overflow:hidden;
 
-  overflow:hidden;
+    border:1px solid var(--border);
 
-  border:1px solid #242424;
+    background:
+        radial-gradient(circle at 50% 30%,#333,transparent 35%),
+        linear-gradient(145deg,#181818,#050505);
 
-  background:
-    radial-gradient(
-      circle at 50% 25%,
-      #454545,
-      #171717 42%,
-      #050505 82%
-    );
-
-  transform-style:preserve-3d;
-
-  transition:.25s;
+    transition:.5s;
 }
 
 .collection:hover{
-  transform:
-    perspective(900px)
-    rotateX(5deg)
-    rotateY(-5deg)
-    translateY(-7px);
+    transform:
+        translateY(-8px)
+        perspective(700px)
+        rotateX(2deg);
 
-  border-color:#d8bd82;
+    border-color:rgba(217,187,120,.6);
 }
 
-.collection-model{
-  position:absolute;
+.collection::after{
+    content:"";
 
-  left:50%;
-  top:43%;
+    position:absolute;
+    inset:0;
 
-  width:155px;
-  height:245px;
-
-  transform:
-    translate(-50%,-50%)
-    translateZ(65px);
-
-  border-radius:45% 45% 20% 20%;
-
-  background:
-    linear-gradient(
-      100deg,
-      #080808,
-      #666,
-      #111
-    );
-
-  box-shadow:
-    25px 30px 45px #000;
+    background:
+        linear-gradient(
+            transparent 45%,
+            rgba(0,0,0,.9)
+        );
 }
 
-.collection-info{
-  position:absolute;
+.collection-content{
+    position:absolute;
 
-  left:22px;
-  bottom:22px;
+    bottom:25px;
+    left:25px;
 
-  z-index:4;
-
-  transform:translateZ(100px);
+    z-index:2;
 }
 
-.collection-info small{
-  color:#d8bd82;
-
-  font-size:8px;
-
-  letter-spacing:2px;
+.collection-content h3{
+    font-size:16px;
+    line-height:1.2;
 }
 
-.collection-info h3{
-  font-size:12px;
-
-  margin-top:7px;
-
-  letter-spacing:.5px;
+.arrow{
+    display:block;
+    margin-top:15px;
+    color:var(--gold);
 }
 
-/* =========================
+/* ================================
    PRODUCTS
-========================= */
+================================ */
 
 .products{
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:16px;
-
-  perspective:1200px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
 }
 
-.product{
-  background:#090909;
+.product-card{
+    position:relative;
 
-  border:1px solid #222;
+    background:#0b0b0b;
+    border:1px solid var(--border);
 
-  transform-style:preserve-3d;
-
-  transition:.2s;
+    transition:.5s;
 }
 
-.product:hover{
-  border-color:#d8bd82;
+.product-card:hover{
+    transform:
+        translateY(-10px)
+        perspective(800px)
+        rotateX(2deg);
+
+    border-color:rgba(217,187,120,.5);
 }
 
 .product-image{
-  height:275px;
+    height:330px;
 
-  display:flex;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  align-items:center;
-  justify-content:center;
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #333,
+            #090909 65%
+        );
 
-  background:
-    radial-gradient(
-      circle,
-      #3d3d3d,
-      #151515 42%,
-      #050505 80%
-    );
-
-  overflow:hidden;
+    overflow:hidden;
 }
 
 .shirt{
-  width:140px;
-  height:190px;
+    width:145px;
+    height:190px;
 
-  background:
-    linear-gradient(
-      100deg,
-      #080808,
-      #777,
-      #101010
+    background:
+        linear-gradient(
+            120deg,
+            #2a2a2a,
+            #080808
+        );
+
+    clip-path:polygon(
+        25% 0,
+        75% 0,
+        100% 20%,
+        82% 36%,
+        75% 100%,
+        25% 100%,
+        18% 36%,
+        0 20%
     );
 
-  clip-path:polygon(
-    25% 0,
-    40% 7%,
-    60% 7%,
-    75% 0,
-    100% 18%,
-    82% 38%,
-    72% 26%,
-    72% 100%,
-    28% 100%,
-    28% 26%,
-    18% 38%,
-    0 18%
-  );
+    box-shadow:0 30px 50px rgba(0,0,0,.8);
 
-  transform:translateZ(70px);
-
-  filter:
-    drop-shadow(25px 30px 25px #000);
-
-  transition:.5s;
+    transition:.5s;
 }
 
-.product:hover .shirt{
-  transform:
-    translateZ(100px)
-    rotateY(10deg);
+.product-card:hover .shirt{
+    transform:scale(1.08) rotate(-2deg);
 }
 
 .product-info{
-  padding:17px;
+    padding:20px;
+}
+
+.tag{
+    color:var(--gold);
+    font-size:9px;
+    letter-spacing:2px;
 }
 
 .product-info h3{
-  font-size:11px;
-
-  margin-bottom:6px;
+    margin-top:8px;
+    font-size:14px;
 }
 
 .price{
-  color:#d8bd82;
-
-  font-size:11px;
+    color:#aaa;
+    margin-top:8px;
+    font-size:13px;
 }
 
-.colors{
-  display:flex;
+.add{
+    margin-top:15px;
 
-  gap:5px;
+    width:100%;
+    padding:12px;
 
-  margin-top:10px;
+    background:transparent;
+    border:1px solid #555;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
 }
 
-.color{
-  width:10px;
-  height:10px;
-
-  border-radius:50%;
-
-  background:#111;
-
-  border:1px solid #666;
+.add:hover{
+    background:var(--gold);
+    color:#000;
 }
 
-.white{
-  background:#eee;
-}
-
-.grey{
-  background:#777;
-}
-
-/* =========================
+/* ================================
    STORY
-========================= */
+================================ */
 
 .story{
-  display:grid;
+    min-height:480px;
 
-  grid-template-columns:1.2fr 1fr;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
 
-  min-height:500px;
+    padding:0;
 
-  background:#0b0b0b;
+    background:
+        linear-gradient(
+            90deg,
+            #101010,
+            #050505
+        );
+
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
-.story-image{
-  position:relative;
+.story-visual{
+    min-height:480px;
 
-  min-height:430px;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #555,
+            #111 30%,
+            #050505 70%
+        );
 
-  background:
-    radial-gradient(
-      circle at 45% 25%,
-      #777,
-      #272727 30%,
-      #090909 70%
-    );
+    position:relative;
+    overflow:hidden;
 }
 
-.story-image::after{
-  content:"";
+.story-visual::before{
+    content:"";
 
-  position:absolute;
+    position:absolute;
 
-  width:140px;
-  height:280px;
+    width:150px;
+    height:280px;
 
-  left:50%;
-  top:55%;
+    background:linear-gradient(#333,#050505);
 
-  transform:
-    translate(-50%,-50%)
-    rotateY(-10deg);
+    left:50%;
+    top:25%;
 
-  background:
-    linear-gradient(
-      90deg,
-      #080808,
-      #777,
-      #111
-    );
+    transform:
+        translateX(-50%)
+        perspective(700px)
+        rotateY(-12deg);
 
-  border-radius:50% 50% 20% 20%;
+    border-radius:70px 70px 25px 25px;
 
-  box-shadow:30px 30px 45px #000;
+    box-shadow:
+        0 40px 70px rgba(0,0,0,.9);
 }
 
 .story-content{
-  padding:75px 50px;
+    padding:70px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 .story-content h2{
-  font-size:43px;
-
-  line-height:.95;
+    font-size:48px;
+    text-transform:uppercase;
 }
 
 .story-content p{
-  color:#999;
-
-  font-size:12px;
-
-  line-height:1.8;
-
-  max-width:420px;
-
-  margin:23px 0 28px;
+    color:#999;
+    line-height:1.7;
+    margin:25px 0;
+    max-width:500px;
 }
 
-/* =========================
-   ATHLETE STORIES
-========================= */
+/* ================================
+   ATHLETE
+================================ */
 
-.athlete-section{
-  position:relative;
+.athlete{
+    min-height:450px;
 
-  min-height:450px;
+    display:flex;
+    align-items:center;
 
-  overflow:hidden;
-
-  padding:80px 5%;
-
-  background:
-    radial-gradient(
-      circle at 80% 50%,
-      #25231d,
-      #050505 65%
-    );
+    background:
+        radial-gradient(
+            ellipse at right,
+            #292929,
+            #050505 60%
+        );
 }
 
-.athlete-section h2{
-  font-size:46px;
-
-  line-height:.95;
+.athlete-content{
+    max-width:550px;
 }
 
-.athlete-section p{
-  max-width:450px;
-
-  color:#999;
-
-  font-size:12px;
-
-  line-height:1.7;
-
-  margin:20px 0 28px;
+.athlete-content h2{
+    font-size:50px;
+    text-transform:uppercase;
 }
 
-.athlete-shadow{
-  position:absolute;
+.athlete-content p{
+    color:#999;
+    line-height:1.7;
+    margin:25px 0;
+}
 
-  right:10%;
-  bottom:-50px;
+.athlete-figure{
+    margin-left:auto;
 
-  width:290px;
-  height:410px;
+    width:300px;
+    height:360px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #080808,
-      #555,
-      #080808
+    position:relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #252525,
+            #080808
+        );
+
+    clip-path:polygon(
+        35% 0,
+        65% 0,
+        85% 18%,
+        100% 100%,
+        0 100%,
+        15% 18%
     );
 
-  clip-path:polygon(
-    42% 0,
-    60% 3%,
-    68% 17%,
-    80% 30%,
-    95% 50%,
-    100% 75%,
-    86% 100%,
-    15% 100%,
-    0 75%,
-    14% 48%,
-    28% 29%,
-    34% 10%
-  );
+    transform:
+        perspective(900px)
+        rotateY(-12deg);
 
-  filter:
-    drop-shadow(20px 25px 45px #000);
-
-  transform:
-    perspective(700px)
-    rotateY(-12deg);
+    box-shadow:0 50px 100px rgba(0,0,0,.8);
 }
 
-/* =========================
+/* ================================
    WAITLIST
-========================= */
+================================ */
 
 .waitlist{
-  padding:65px 5%;
+    padding:60px 5%;
 
-  display:flex;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-  align-items:center;
+    background:
+        linear-gradient(
+            100deg,
+            #121212,
+            #080808
+        );
 
-  justify-content:space-between;
-
-  gap:35px;
-
-  border-top:1px solid #222;
-  border-bottom:1px solid #222;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
 .waitlist h2{
-  font-size:25px;
+    font-size:25px;
 }
 
 .waitlist p{
-  color:#666;
-
-  font-size:10px;
-
-  margin-top:7px;
+    color:#777;
+    font-size:12px;
+    margin-top:8px;
 }
 
-.email{
-  display:flex;
-
-  width:450px;
+.wait-form{
+    display:flex;
 }
 
-.email input{
-  flex:1;
+.wait-form input{
+    width:300px;
+    padding:16px;
 
-  padding:15px;
+    background:#111;
+    border:1px solid #333;
 
-  background:#111;
-
-  border:1px solid #333;
-
-  color:#fff;
-
-  outline:none;
+    color:#fff;
+    outline:none;
 }
 
-.email button{
-  padding:0 23px;
+.wait-form button{
+    padding:16px 25px;
 
-  border:0;
+    border:none;
 
-  background:#d8bd82;
+    background:var(--gold);
+    color:#000;
 
-  color:#050505;
-
-  font-size:9px;
-
-  font-weight:900;
-
-  letter-spacing:1px;
-
-  cursor:pointer;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-/* =========================
+/* ================================
    FOOTER
-========================= */
+================================ */
 
 footer{
-  padding:35px 5%;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  color:#555;
-
-  font-size:8px;
-
-  letter-spacing:1px;
+    padding:60px 5% 25px;
 }
 
-/* =========================
+.footer-top{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:50px;
+
+    padding-bottom:50px;
+    border-bottom:1px solid var(--border);
+}
+
+.footer-brand p{
+    max-width:300px;
+    color:#777;
+    line-height:1.7;
+    margin-top:20px;
+    font-size:12px;
+}
+
+.footer-column h3{
+    font-size:11px;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.footer-column a{
+    display:block;
+    color:#777;
+    text-decoration:none;
+    font-size:12px;
+    margin:12px 0;
+}
+
+.footer-column a:hover{
+    color:var(--gold);
+}
+
+.footer-bottom{
+    padding-top:25px;
+
+    display:flex;
+    justify-content:space-between;
+
+    color:#555;
+    font-size:10px;
+}
+
+/* ================================
    MOBILE
-========================= */
+================================ */
 
-@media(max-width:850px){
+@media(max-width:900px){
 
-  header{
-    padding:0 4%;
-  }
+    header{
+        height:70px;
+        padding:0 5%;
+    }
 
-  nav{
-    display:none;
-  }
+    .logo-text{
+        font-size:17px;
+        letter-spacing:4px;
+    }
 
-  .playkish-logo{
-    width:48px;
-    height:38px;
-  }
+    nav{
+        display:none;
+    }
 
-  .playkish-word{
-    font-size:16px;
-    letter-spacing:3px;
-  }
+    .menu{
+        display:block;
+    }
 
-  .hero{
-    min-height:720px;
-  }
+    .hero{
+        padding:140px 7% 70px;
+        min-height:100vh;
+        display:block;
+    }
 
-  .hero-content{
-    width:100%;
-    padding:120px 7% 40px;
-  }
+    .hero-content{
+        width:100%;
+    }
 
-  .hero h1{
-    font-size:55px;
-  }
+    .hero h1{
+        font-size:58px;
+        letter-spacing:-3px;
+    }
 
-  .athlete{
-    right:-120px;
-    opacity:.48;
-  }
+    .hero-description{
+        font-size:14px;
+    }
 
-  .hero-ring{
-    right:-180px;
-  }
+    .hero-visual{
+        position:relative;
+        right:auto;
+        top:auto;
 
-  .hero-note{
-    display:none;
-  }
+        width:100%;
+        height:390px;
 
-  .features{
-    grid-template-columns:1fr 1fr;
-  }
+        margin-top:30px;
+    }
 
-  .feature{
-    border-bottom:1px solid #222;
-  }
+    .product-3d{
+        width:220px;
+        height:320px;
 
-  .collection-grid,
-  .products{
-    grid-template-columns:1fr 1fr;
-  }
+        right:15%;
+    }
 
-  .story{
-    grid-template-columns:1fr;
-  }
+    .orbit{
+        width:400px;
+        height:400px;
+    }
 
-  .story-content{
-    padding:50px 7%;
-  }
+    .features{
+        grid-template-columns:1fr 1fr;
+    }
 
-  .athlete-shadow{
-    right:-80px;
-    opacity:.45;
-  }
+    .feature{
+        border-bottom:1px solid var(--border);
+    }
 
-  .waitlist{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+    .collections,
+    .products{
+        grid-template-columns:1fr 1fr;
+    }
 
-  .email{
-    width:100%;
-  }
+    .collection{
+        height:300px;
+    }
+
+    .product-image{
+        height:250px;
+    }
+
+    .story{
+        grid-template-columns:1fr;
+    }
+
+    .story-content{
+        padding:50px 7%;
+    }
+
+    .story-content h2,
+    .athlete-content h2{
+        font-size:38px;
+    }
+
+    .story-visual{
+        min-height:330px;
+    }
+
+    .athlete{
+        display:block;
+        padding:80px 7%;
+    }
+
+    .athlete-figure{
+        margin:50px auto 0;
+    }
+
+    .waitlist{
+        display:block;
+        padding:50px 7%;
+    }
+
+    .wait-form{
+        margin-top:25px;
+    }
+
+    .wait-form input{
+        width:100%;
+    }
+
+    .footer-top{
+        grid-template-columns:1fr 1fr;
+    }
+
 }
 
-@media(max-width:500px){
+@media(max-width:550px){
 
-  .hero h1{
-    font-size:46px;
-    letter-spacing:-3px;
-  }
+    .header-icons{
+        gap:12px;
+    }
 
-  .buttons{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+    .logo-mark{
+        width:45px;
+    }
 
-  .collection{
-    height:260px;
-  }
+    .logo-text{
+        font-size:15px;
+    }
 
-  .product-image{
-    height:190px;
-  }
+    .hero h1{
+        font-size:49px;
+    }
 
-  .shirt{
-    width:100px;
-    height:140px;
-  }
+    .buttons{
+        flex-direction:column;
+    }
 
-  .story-content h2,
-  .athlete-section h2{
-    font-size:36px;
-  }
+    .btn{
+        text-align:center;
+    }
 
-  footer{
-    flex-direction:column;
-    gap:12px;
-  }
+    .features,
+    .collections,
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        border-right:none;
+    }
+
+    .collection{
+        height:380px;
+    }
+
+    .product-image{
+        height:330px;
+    }
+
+    .section-heading{
+        display:block;
+    }
+
+    .view-all{
+        display:block;
+        margin-top:15px;
+    }
+
+    .wait-form{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .footer-top{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        display:block;
+        line-height:2;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
+<!-- ================================
      HEADER
-===================================================== -->
+================================ -->
 
 <header>
 
-<a href="#" class="brand">
+<a href="#" class="logo">
 
-<!-- PLAYKISH ANGULAR P LOGO -->
+<div class="logo-mark">
 
-<div class="playkish-logo">
-
-<svg viewBox="0 0 120 90"
-     xmlns="http://www.w3.org/2000/svg">
-
-<!-- top angular section -->
+<svg viewBox="0 0 120 90" fill="none">
 
 <path
-d="M8 8
-L108 8
-L91 29
-L55 29
-L48 39
-L80 39
-L61 64
-L39 64
-L23 84
-L8 84
-L34 45
-L48 26
-L78 26
-L88 15
-L20 15
-Z"
-fill="#d8bd82"/>
-
-<!-- inner cut -->
+d="M8 12H110L88 30H55L75 43L55 58L38 47L23 78H5L25 38L8 12Z"
+fill="#D9BB78"/>
 
 <path
-d="M34 45
-L48 26
-L78 26
-L65 42
-L53 42
-L45 53
-Z"
+d="M43 37L68 37L53 48L43 42Z"
 fill="#050505"/>
 
 </svg>
 
 </div>
 
-<div class="playkish-word">
-PLAYKISH
-</div>
+<div class="logo-text">PLAYKISH</div>
 
 </a>
 
 
 <nav>
 
-<a href="#">HOME</a>
-<a href="#shop">SHOP</a>
-<a href="#collections">COLLECTIONS</a>
-<a href="#about">ABOUT</a>
+<a href="#">Home</a>
+<a href="#shop">Shop</a>
+<a href="#collections">Collections</a>
+<a href="#story">About</a>
 
 </nav>
 
 
-<div class="icons">
+<div class="header-icons">
 
 <div class="icon">⌕</div>
+
 <div class="icon">♙</div>
+
+<div class="cart">
+
 <div class="icon">□</div>
+
+<span class="cart-count" id="cartCount">0</span>
+
+</div>
 
 </div>
 
 </header>
 
 
-<!-- =====================================================
+<!-- ================================
      HERO
-===================================================== -->
+================================ -->
+
+<main>
 
 <section class="hero">
 
-<div class="hero-ring"></div>
-
-
-<div class="athlete">
-
-<div class="athlete-head"></div>
-<div class="athlete-neck"></div>
-<div class="athlete-body"></div>
-
-</div>
-
-
 <div class="hero-content">
 
-<div class="kicker">
+<div class="eyebrow">
 PERFORMANCE SPORTSWEAR
 </div>
 
 <h1>
-
-BUILT TO<br>
-PERFORM.<br>
-
+BUILT TO
+PERFORM.
 <span>MADE TO MOVE.</span>
-
 </h1>
 
-<p class="description">
-
-Premium sportswear for athletes
-who refuse to stay ordinary.
-
+<p class="hero-description">
+Premium sportswear for athletes who refuse to stay ordinary.
+Engineered for movement. Designed for performance.
 </p>
 
 <div class="buttons">
 
-<a class="btn btn-primary" href="#shop">
+<a href="#shop" class="btn btn-primary">
 SHOP MEN →
 </a>
 
-<a class="btn" href="#shop">
+<a href="#shop" class="btn btn-secondary">
 SHOP WOMEN →
 </a>
 
@@ -1396,48 +1246,64 @@ SHOP WOMEN →
 </div>
 
 
-<div class="hero-note">
+<div class="hero-visual">
 
-More<br>
-than<br>
-just<br>
-clothes.
+<div class="orbit"></div>
+<div class="orbit two"></div>
+
+<div class="product-3d">
+
+<div class="product-logo">
+
+<svg viewBox="0 0 120 90" fill="none">
+
+<path
+d="M8 12H110L88 30H55L75 43L55 58L38 47L23 78H5L25 38L8 12Z"
+fill="#D9BB78"/>
+
+<path
+d="M43 37L68 37L53 48L43 42Z"
+fill="#080808"/>
+
+</svg>
+
+</div>
+
+<div class="product-label">
+PLAYKISH
+</div>
+
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     PERFORMANCE FEATURES
-===================================================== -->
+<!-- ================================
+     FEATURES
+================================ -->
 
-<section class="features">
+<div class="features">
 
 <div class="feature">
 
 <div class="feature-icon">◈</div>
 
-<div>
+<h3>ULTRA LIGHTWEIGHT</h3>
 
-<h4>ULTRA LIGHTWEIGHT</h4>
 <p>Feel free. Move faster.</p>
-
-</div>
 
 </div>
 
 
 <div class="feature">
 
-<div class="feature-icon">≋</div>
+<div class="feature-icon">〰</div>
 
-<div>
+<h3>BREATHABLE FABRIC</h3>
 
-<h4>BREATHABLE FABRIC</h4>
 <p>Stay cool. Perform longer.</p>
-
-</div>
 
 </div>
 
@@ -1446,12 +1312,9 @@ clothes.
 
 <div class="feature-icon">♧</div>
 
-<div>
+<h3>ATHLETE BUILT</h3>
 
-<h4>ATHLETE BUILT</h4>
 <p>Designed with real athletes.</p>
-
-</div>
 
 </div>
 
@@ -1460,78 +1323,52 @@ clothes.
 
 <div class="feature-icon">◇</div>
 
-<div>
+<h3>DURABLE & LONG LASTING</h3>
 
-<h4>DURABLE & LONG LASTING</h4>
 <p>Made for the grind.</p>
 
 </div>
 
 </div>
 
-</section>
 
-
-<!-- =====================================================
+<!-- ================================
      COLLECTIONS
-===================================================== -->
+================================ -->
 
-<section class="section" id="collections">
+<section id="collections">
 
-<div class="heading">
+<div class="section-heading">
 
 <div>
 
-<div class="overline">
+<div class="small-title">
 EXPLORE OUR
 </div>
 
-<h2>
-COLLECTIONS
-</h2>
+<h2>COLLECTIONS</h2>
 
 </div>
 
-<div class="view">
+<a class="view-all" href="#shop">
 VIEW ALL →
-</div>
+</a>
 
 </div>
 
 
-<div class="collection-grid">
-
+<div class="collections">
 
 <div class="collection">
 
-<div class="collection-model"></div>
-
-<div class="collection-info">
-
-<small>01</small>
+<div class="collection-content">
 
 <h3>
-MEN'S COLLECTION →
+MEN'S<br>
+COLLECTION
 </h3>
 
-</div>
-
-</div>
-
-
-<div class="collection">
-
-<div class="collection-model"
-style="background:linear-gradient(100deg,#777,#eee,#777)">
-</div>
-
-<div class="collection-info">
-
-<small>02</small>
-
-<h3>
-WOMEN'S COLLECTION →
-</h3>
+<span class="arrow">→</span>
 
 </div>
 
@@ -1540,15 +1377,14 @@ WOMEN'S COLLECTION →
 
 <div class="collection">
 
-<div class="collection-model"></div>
-
-<div class="collection-info">
-
-<small>03</small>
+<div class="collection-content">
 
 <h3>
-PERFORMANCE TEES →
+WOMEN'S<br>
+COLLECTION
 </h3>
+
+<span class="arrow">→</span>
 
 </div>
 
@@ -1557,48 +1393,56 @@ PERFORMANCE TEES →
 
 <div class="collection">
 
-<div class="collection-model"></div>
-
-<div class="collection-info">
-
-<small>04</small>
+<div class="collection-content">
 
 <h3>
-HOODIES & SWEATSHIRTS →
+PERFORMANCE<br>
+TEES
 </h3>
 
-</div>
+<span class="arrow">→</span>
 
 </div>
 
+</div>
+
+
+<div class="collection">
+
+<div class="collection-content">
+
+<h3>
+HOODIES &<br>
+SWEATSHIRTS
+</h3>
+
+<span class="arrow">→</span>
+
+</div>
+
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- ================================
      PRODUCTS
-===================================================== -->
+================================ -->
 
-<section class="section" id="shop">
+<section id="shop">
 
-<div class="heading">
+<div class="section-heading">
 
 <div>
 
-<div class="overline">
-PLAYKISH ESSENTIALS
+<div class="small-title">
+PLAYKISH STORE
 </div>
 
-<h2>
-BEST SELLERS
-</h2>
+<h2>BEST SELLERS</h2>
 
-</div>
-
-<div class="view">
-← &nbsp; →
 </div>
 
 </div>
@@ -1607,7 +1451,7 @@ BEST SELLERS
 <div class="products">
 
 
-<div class="product">
+<div class="product-card">
 
 <div class="product-image">
 
@@ -1617,112 +1461,112 @@ BEST SELLERS
 
 <div class="product-info">
 
-<h3>
-PERFORMANCE TEE
-</h3>
+<div class="tag">
+BESTSELLER
+</div>
+
+<h3>Performance Tee</h3>
 
 <div class="price">
 ₹1,499
 </div>
 
-<div class="colors">
-<span class="color"></span>
-<span class="color white"></span>
-<span class="color grey"></span>
-</div>
+<button class="add" onclick="addCart()">
+ADD TO BAG
+</button>
 
 </div>
 
 </div>
 
 
-<div class="product">
+<div class="product-card">
 
 <div class="product-image">
 
-<div
-class="shirt"
-style="background:linear-gradient(100deg,#eee,#fff,#aaa)">
+<div class="shirt"
+style="background:linear-gradient(120deg,#eee,#777,#ddd)">
 </div>
 
 </div>
 
 <div class="product-info">
 
-<h3>
-VELOCITY TEE
-</h3>
+<div class="tag">
+NEW
+</div>
+
+<h3>Velocity Tee</h3>
 
 <div class="price">
 ₹1,499
 </div>
 
-<div class="colors">
-<span class="color white"></span>
-<span class="color grey"></span>
-<span class="color"></span>
-</div>
+<button class="add" onclick="addCart()">
+ADD TO BAG
+</button>
 
 </div>
 
 </div>
 
 
-<div class="product">
+<div class="product-card">
 
 <div class="product-image">
 
-<div class="shirt"></div>
+<div class="shirt"
+style="height:220px;width:150px;border-radius:25px;background:linear-gradient(145deg,#222,#050505)">
+</div>
 
 </div>
 
 <div class="product-info">
 
-<h3>
-ENDURANCE HOODIE
-</h3>
+<div class="tag">
+PERFORMANCE
+</div>
+
+<h3>Endurance Hoodie</h3>
 
 <div class="price">
 ₹2,499
 </div>
 
-<div class="colors">
-<span class="color"></span>
-<span class="color grey"></span>
-<span class="color white"></span>
-</div>
+<button class="add" onclick="addCart()">
+ADD TO BAG
+</button>
 
 </div>
 
 </div>
 
 
-<div class="product">
+<div class="product-card">
 
 <div class="product-image">
 
-<div
-class="shirt"
-style="height:125px">
+<div class="shirt"
+style="height:120px;width:190px;margin-top:90px;background:linear-gradient(#222,#070707)">
 </div>
 
 </div>
 
 <div class="product-info">
 
-<h3>
-FLEX SHORTS
-</h3>
+<div class="tag">
+TRAINING
+</div>
+
+<h3>Flex Shorts</h3>
 
 <div class="price">
 ₹1,999
 </div>
 
-<div class="colors">
-<span class="color"></span>
-<span class="color grey"></span>
-<span class="color white"></span>
-</div>
+<button class="add" onclick="addCart()">
+ADD TO BAG
+</button>
 
 </div>
 
@@ -1734,43 +1578,35 @@ FLEX SHORTS
 </section>
 
 
-<!-- =====================================================
+<!-- ================================
      STORY
-===================================================== -->
+================================ -->
 
-<section class="story" id="about">
+<section id="story" class="story">
 
-<div class="story-image"></div>
-
+<div class="story-visual"></div>
 
 <div class="story-content">
 
-<div class="overline">
+<div class="small-title">
 OUR STORY
 </div>
 
 <h2>
-
 BUILT FROM<br>
 A DIFFERENT<br>
 MINDSET.
-
 </h2>
 
 <p>
-
 PLAYKISH was born from a simple belief —
-that every athlete deserves better gear.
-
-Better movement.
-Better performance.
-
-A brand that understands
-the grind and the dream.
-
+that every athlete deserves better.
+Better gear. Better performance.
+A brand that understands the grind,
+the discipline and the dream.
 </p>
 
-<a class="btn" href="#">
+<a href="#" class="btn">
 LEARN MORE →
 </a>
 
@@ -1779,46 +1615,60 @@ LEARN MORE →
 </section>
 
 
-<!-- =====================================================
-     ATHLETE STORIES
-===================================================== -->
+<!-- ================================
+     ATHLETE
+================================ -->
 
-<section class="athlete-section">
+<section class="athlete">
 
-<div class="overline">
+<div class="athlete-content">
+
+<div class="small-title">
 ATHLETE STORIES
 </div>
 
 <h2>
-
 REAL PEOPLE.<br>
 REAL JOURNEYS.
-
 </h2>
 
 <p>
-
 From local courts to bigger dreams —
-hear how PLAYKISH athletes
-are pushing their limits.
-
+PLAYKISH is made for athletes who
+choose to keep moving forward.
 </p>
 
-<a class="btn" href="#">
+<a href="#" class="btn">
 READ STORIES →
 </a>
 
+</div>
 
-<div class="athlete-shadow"></div>
+
+<div class="athlete-figure">
+
+<div class="product-logo">
+
+<svg viewBox="0 0 120 90" fill="none">
+
+<path
+d="M8 12H110L88 30H55L75 43L55 58L38 47L23 78H5L25 38L8 12Z"
+fill="#D9BB78"/>
+
+</svg>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- ================================
      WAITLIST
-===================================================== -->
+================================ -->
 
-<section class="waitlist">
+<div class="waitlist">
 
 <div>
 
@@ -1827,17 +1677,17 @@ BE THE FIRST TO KNOW.
 </h2>
 
 <p>
-Join our waitlist for early access,
-exclusive drops and special offers.
+Join our waitlist for early access, exclusive drops and special offers.
 </p>
 
 </div>
 
 
-<form class="email">
+<form class="wait-form" onsubmit="joinWaitlist(event)">
 
 <input
 type="email"
+id="email"
 placeholder="Enter your email address"
 required
 >
@@ -1848,105 +1698,196 @@ JOIN WAITLIST →
 
 </form>
 
-</section>
+</div>
 
 
-<!-- =====================================================
+</main>
+
+
+<!-- ================================
      FOOTER
-===================================================== -->
+================================ -->
 
 <footer>
+
+<div class="footer-top">
+
+
+<div class="footer-brand">
+
+<a href="#" class="logo">
+
+<div class="logo-mark">
+
+<svg viewBox="0 0 120 90" fill="none">
+
+<path
+d="M8 12H110L88 30H55L75 43L55 58L38 47L23 78H5L25 38L8 12Z"
+fill="#D9BB78"/>
+
+</svg>
+
+</div>
+
+<div class="logo-text">
+PLAYKISH
+</div>
+
+</a>
+
+<p>
+Premium performance sportswear
+for athletes who refuse to stay ordinary.
+</p>
+
+</div>
+
+
+<div class="footer-column">
+
+<h3>SHOP</h3>
+
+<a href="#shop">Men</a>
+<a href="#shop">Women</a>
+<a href="#shop">Performance</a>
+<a href="#shop">New Arrivals</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h3>PLAYKISH</h3>
+
+<a href="#story">Our Story</a>
+<a href="#">Athletes</a>
+<a href="#">Contact</a>
+<a href="#">FAQ</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h3>FOLLOW</h3>
+
+<a href="#">Instagram</a>
+<a href="#">YouTube</a>
+<a href="#">X</a>
+<a href="#">Pinterest</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
 
 <div>
 © 2026 PLAYKISH. ALL RIGHTS RESERVED.
 </div>
 
 <div>
-SHOP &nbsp;&nbsp;
-ABOUT &nbsp;&nbsp;
-CONTACT &nbsp;&nbsp;
-PRIVACY &nbsp;&nbsp;
-TERMS
+BUILT TO PERFORM. MADE TO MOVE.
+</div>
+
 </div>
 
 </footer>
 
 
+<!-- ================================
+     JAVASCRIPT
+================================ -->
+
 <script>
 
-/* =========================
-   WAITLIST
-========================= */
+let cart = 0;
 
-const form =
-document.querySelector(".email");
+function addCart(){
 
-form.addEventListener(
-"submit",
-function(event){
+    cart++;
 
-event.preventDefault();
+    document.getElementById("cartCount").textContent = cart;
 
-const button =
-form.querySelector("button");
-
-button.textContent =
-"YOU'RE ON THE LIST ✓";
+    alert("Added to your PLAYKISH bag 🔥");
 
 }
-);
 
 
-/* =========================
-   3D PRODUCT TILT
-========================= */
+function joinWaitlist(event){
 
-const cards =
-document.querySelectorAll(
-".collection,.product"
-);
+    event.preventDefault();
 
-cards.forEach(function(card){
+    const email =
+        document.getElementById("email").value;
 
-card.addEventListener(
-"mousemove",
-function(event){
+    if(email){
 
-const rect =
-card.getBoundingClientRect();
+        alert(
+            "You're on the PLAYKISH waitlist 🔥"
+        );
 
-const x =
-event.clientX - rect.left;
+        document.getElementById("email").value = "";
 
-const y =
-event.clientY - rect.top;
-
-const rotateY =
-((x / rect.width) - .5) * 8;
-
-const rotateX =
-((y / rect.height) - .5) * -8;
-
-card.style.transform =
-"perspective(900px) rotateX(" +
-rotateX +
-"deg) rotateY(" +
-rotateY +
-"deg) translateY(-6px)";
+    }
 
 }
-);
 
-card.addEventListener(
-"mouseleave",
-function(){
 
-card.style.transform = "";
+/* 3D MOUSE EFFECT */
+
+const visual =
+    document.querySelector(".hero-visual");
+
+const product =
+    document.querySelector(".product-3d");
+
+
+if(window.innerWidth > 900){
+
+    visual.addEventListener(
+        "mousemove",
+        function(event){
+
+            const rect =
+                visual.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const rotateY =
+                ((x / rect.width) - .5) * 20;
+
+            const rotateX =
+                ((y / rect.height) - .5) * -15;
+
+            product.style.transform =
+                "rotateX(" +
+                rotateX +
+                "deg) rotateY(" +
+                rotateY +
+                "deg) translateY(-10px)";
+
+        }
+    );
+
+
+    visual.addEventListener(
+        "mouseleave",
+        function(){
+
+            product.style.transform =
+                "rotateY(-18deg) rotateX(5deg) rotateZ(3deg)";
+
+        }
+    );
 
 }
-);
-
-});
 
 </script>
 
