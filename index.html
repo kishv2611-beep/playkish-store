@@ -1,1 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>PLAYKISH — Built To Perform</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080808;
+      color: #fff;
+    }
+
+    header {
+      height: 78px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #222;
+      background: #080808;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border: 2px solid #d6b878;
+      display: grid;
+      place-items: center;
+      color: #d6b878;
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    nav a:hover {
+      color: #d6b878;
+    }
+
+    .hero {
+      min-height: 650px;
+      padding: 100px 7%;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 75% 45%, #29251c 0%, #101010 35%, #080808 70%);
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      color: #d6b878;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(55px, 9vw, 110px);
+      line-height: .88;
+      letter-spacing: -5px;
+      margin-bottom: 30px;
+    }
+
+    .hero p {
+      color: #aaa;
+      font-size: 17px;
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 35px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 16px 30px;
+      background: #d6b878;
+      color: #080808;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .button:hover {
+      background: #fff;
+    }
+
+    .section {
+      padding: 90px 7%;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      letter-spacing: -2px;
+    }
+
+    .section-title span {
+      color: #888;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .feature {
+      padding: 35px;
+      border: 1px solid #242424;
+      background: #0e0e0e;
+    }
+
+    .feature-number {
+      color: #d6b878;
+      font-size: 13px;
+      margin-bottom: 45px;
+    }
+
+    .feature h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .feature p {
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .collections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .collection {
+      min-height: 420px;
+      padding: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      background:
+        linear-gradient(145deg, #292929, #0d0d0d);
+      border: 1px solid #252525;
+    }
+
+    .collection:nth-child(2) {
+      background:
+        linear-gradient(145deg, #242017, #0d0d0d);
+    }
+
+    .collection small {
+      color: #d6b878;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .collection h3 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .story {
+      background: #d6b878;
+      color: #080808;
+      padding: 90px 7%;
+    }
+
+    .story h2 {
+      font-size: clamp(42px, 7vw, 80px);
+      max-width: 850px;
+      line-height: .95;
+      letter-spacing: -3px;
+    }
+
+    .story p {
+      max-width: 650px;
+      margin-top: 25px;
+      line-height: 1.7;
+    }
+
+    .waitlist {
+      text-align: center;
+      padding: 100px 7%;
+      background: #0d0d0d;
+    }
+
+    .waitlist h2 {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .waitlist p {
+      color: #888;
+      margin-bottom: 30px;
+    }
+
+    .email {
+      display: flex;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .email input {
+      flex: 1;
+      padding: 17px;
+      background: #181818;
+      border: 1px solid #333;
+      color: white;
+      outline: none;
+    }
+
+    .email button {
+      padding: 17px 25px;
+      background: #d6b878;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 35px 7%;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #222;
+      color: #777;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 600px;
+        padding: 80px 7%;
+      }
+
+      .features,
+      .collections {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title h2 {
+        font-size: 34px;
+      }
+
+      .collection {
+        min-height: 330px;
+      }
+
+      .email {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <div class="logo-mark">P</div>
+      PLAYKISH
+    </div>
+
+    <nav>
+      <a href="#">SHOP</a>
+      <a href="#">MEN</a>
+      <a href="#">WOMEN</a>
+      <a href="#">ABOUT</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        PERFORMANCE SPORTSWEAR
+      </div>
+
+      <h1>
+        BUILT TO<br>
+        PERFORM.
+      </h1>
+
+      <p>
+        Premium performance apparel engineered for athletes
+        who refuse to stay average.
+      </p>
+
+      <a href="#collections" class="button">
+        EXPLORE COLLECTION
+      </a>
+
+    </div>
+  </section>
+
+  <section class="section">
+
+    <div class="section-title">
+      <h2>WHY PLAYKISH</h2>
+      <span>ENGINEERED FOR ATHLETES</span>
+    </div>
+
+    <div class="features">
+
+      <div class="feature">
+        <div class="feature-number">01</div>
+        <h3>LIGHTWEIGHT</h3>
+        <p>
+          Built to move with you without unnecessary weight.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-number">02</div>
+        <h3>BREATHABLE</h3>
+        <p>
+          Performance-focused fabrics designed for intense sessions.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-number">03</div>
+        <h3>ATHLETE FIRST</h3>
+        <p>
+          Every detail starts with what athletes actually need.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section" id="collections">
+
+    <div class="section-title">
+      <h2>COLLECTIONS</h2>
+      <span>01 / 02</span>
+    </div>
+
+    <div class="collections">
+
+      <div class="collection">
+        <small>01 — MEN</small>
+        <h3>MEN'S PERFORMANCE</h3>
+        <a href="#" class="button">SHOP MEN</a>
+      </div>
+
+      <div class="collection">
+        <small>02 — WOMEN</small>
+        <h3>WOMEN'S PERFORMANCE</h3>
+        <a href="#" class="button">SHOP WOMEN</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="story">
+
+    <h2>
+      MADE FOR THE ONES
+      WHO KEEP MOVING.
+    </h2>
+
+    <p>
+      PLAYKISH exists for athletes chasing something bigger.
+      Train harder. Move faster. Keep going.
+    </p>
+
+  </section>
+
+  <section class="waitlist">
+
+    <h2>BE FIRST.</h2>
+
+    <p>
+      Join the PLAYKISH launch list.
+    </p>
+
+    <form class="email">
+      <input
+        type="email"
+        placeholder="Your email address"
+        required
+      >
+
+      <button type="submit">
+        JOIN
+      </button>
+    </form>
+
+  </section>
+
+  <footer>
+    <div>© 2026 PLAYKISH</div>
+    <div>BUILT TO PERFORM. MADE TO MOVE.</div>
+  </footer>
+
+</body>
+</html>
