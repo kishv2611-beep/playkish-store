@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APEX Performance Tee | PLAYKISH</title>
+<style>
+:root{--bg:#080808;--panel:#121212;--gold:#d9b86c;--muted:#999;--line:#292929}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:#f5f1e8;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+header{height:76px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:2px}
+.mark{width:35px;height:35px;border:2px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:21px;transform:skew(-7deg)}
+nav{display:flex;gap:25px;color:#aaa;font-size:12px;letter-spacing:1px}
+nav a:hover{color:var(--gold)}
+main{max-width:1160px;margin:55px auto;padding:0 24px}
+.breadcrumb{color:var(--muted);font-size:12px;margin-bottom:28px}
+.breadcrumb a:hover{color:var(--gold)}
+.product{display:grid;grid-template-columns:1.05fr 1fr;gap:65px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.photo{min-height:300px;background:radial-gradient(ellipse,#29251c,#151515 55%,#0b0b0b);display:grid;place-items:center;position:relative;overflow:hidden}
+.photo:first-child{grid-column:span 2;min-height:490px}
+.shirt{width:210px;height:280px;background:linear-gradient(140deg,#353535,#101010);clip-path:polygon(25% 0,42% 8%,58% 8%,75% 0,100% 22%,82% 42%,75% 32%,75% 100%,25% 100%,25% 32%,18% 42%,0 22%);position:relative;filter:drop-shadow(0 25px 20px #000)}
+.shirt:after{content:"PK";position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);font-weight:900;font-size:30px;letter-spacing:2px;color:var(--gold)}
+.photo small{position:absolute;bottom:13px;left:13px;color:#aaa;font-size:9px;letter-spacing:2px}
+.details{padding-top:12px}
+.eyebrow{color:var(--gold);font-size:10px;letter-spacing:3px;font-weight:bold}
+h1{font-size:clamp(34px,5vw,54px);line-height:1.05;margin:15px 0}
+.rating{color:var(--gold);font-size:13px}
+.rating span{color:var(--muted);margin-left:8px}
+.price{font-size:25px;font-weight:bold;margin:24px 0 8px}
+.note{font-size:12px;color:var(--muted)}
+.description{font-size:14px;color:#b4b4b4;line-height:1.8;margin:25px 0}
+.label{font-size:11px;letter-spacing:1px;margin-bottom:12px;display:flex;justify-content:space-between}
+.label span{color:var(--muted)}
+.sizes{display:flex;gap:9px;margin-bottom:25px}
+.size{width:47px;height:43px;border:1px solid #444;background:transparent;color:white;cursor:pointer}
+.size.selected,.size:hover{border-color:var(--gold);background:var(--gold);color:#080808}
+.qtyrow{display:flex;gap:18px;align-items:center;margin-bottom:15px}
+.qty{display:flex;border:1px solid #444;height:49px;align-items:center}
+.qty button{height:100%;width:40px;background:none;color:white;border:0;font-size:20px;cursor:pointer}
+.qty output{min-width:25px;text-align:center}
+.add{height:52px;flex:1;background:var(--gold);color:#080808;border:0;font-weight:bold;letter-spacing:1.5px;cursor:pointer}
+.add:hover{background:#f0d38b}
+.message{font-size:12px;color:var(--gold);min-height:20px;margin:12px 0}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px}
+.feature{border:1px solid var(--line);padding:15px 8px;text-align:center;color:#aaa;font-size:10px;line-height:1.7}
+.feature b{display:block;color:#eee;font-size:11px;margin-bottom:4px}
+.info{border-top:1px solid var(--line);margin-top:55px;padding-top:28px}
+.info h2{font-size:22px;margin-bottom:14px}
+.info p{color:#aaa;font-size:13px;line-height:1.9;max-width:700px}
+footer{border-top:1px solid var(--line);padding:30px 6%;display:flex;justify-content:space-between;color:#777;font-size:10px;letter-spacing:1px;margin-top:70px}
+@media(max-width:760px){header{height:66px}nav{gap:12px;font-size:10px}nav a:nth-child(3),nav a:nth-child(4){display:none}main{margin:30px auto;padding:0 16px}.product{grid-template-columns:1fr;gap:25px}.photo:first-child{min-height:370px}.photo{min-height:200px}.shirt{width:160px;height:220px}.details{padding-top:0}.features{gap:6px}}
+</style>
+</head>
+<body>
+<header>
+<a href="index.html" class="logo"><span class="mark">P</span><span>PLAYKISH</span></a>
+<nav><a href="index.html">HOME</a><a href="shop.html">SHOP</a><a href="shop.html">COLLECTIONS</a></nav>
+<a href="shop.html" aria-label="Back to shop">← SHOP</a>
+</header>
+
+<main>
+<div class="breadcrumb"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / APEX TEE</div>
+<section class="product">
+<div class="gallery">
+<div class="photo"><div class="shirt"></div><small>01 / FRONT VIEW · CONCEPT</small></div>
+<div class="photo"><div class="shirt" style="background:linear-gradient(140deg,#252525,#080808)"></div><small>02 / DETAIL CONCEPT</small></div>
+<div class="photo"><div class="shirt" style="background:linear-gradient(140deg,#403827,#121212)"></div><small>03 / COLOUR CONCEPT</small></div>
+</div>
+
+<div class="details">
+<div class="eyebrow">PERFORMANCE COLLECTION</div>
+<h1>APEX<br>PERFORMANCE TEE</h1>
+<div class="rating">★★★★★ <span>Designed for training</span></div>
+<div class="price">₹1,499</div>
+<div class="note">Demo price · Product not yet available for purchase</div>
+<p class="description">Made for athletes who demand more. The PLAYKISH APEX is a concept for lightweight training apparel with a clean athletic silhouette and signature gold detailing.</p>
+
+<div class="label">SELECT SIZE <span id="selectedSize">Choose a size</span></div>
+<div class="sizes">
+<button class="size" data-size="S">S</button>
+<button class="size" data-size="M">M</button>
+<button class="size" data-size="L">L</button>
+<button class="size" data-size="XL">XL</button>
+<button class="size" data-size="XXL">XXL</button>
+</div>
+
+<div class="label">QUANTITY</div>
+<div class="qtyrow">
+<div class="qty">
+<button id="minus" aria-label="Decrease quantity">−</button>
+<output id="quantity">1</output>
+<button id="plus" aria-label="Increase quantity">+</button>
+</div>
+<button class="add" id="add">ADD TO DEMO CART</button>
+</div>
+<div class="message" id="message" aria-live="polite"></div>
+
+<div class="features">
+<div class="feature"><b>LIGHTWEIGHT</b>Concept feature</div>
+<div class="feature"><b>ATHLETE-FOCUSED</b>Training design</div>
+<div class="feature"><b>PLAYKISH</b>Performance first</div>
+</div>
+</div>
+</section>
+
+<section class="info">
+<h2>PRODUCT DETAILS</h2>
+<p>This is a visual prototype. The fabric composition, fit, sweat management, durability and actual sizing still need to be tested on a physical sample before these performance claims can be made. Final price and availability are not confirmed.</p>
+</section>
+<section class="info">
+<h2>SIZE & FIT</h2>
+<p>Select a size above to test the interface. Once a real sample is ready, add measured garment dimensions and a size guide here.</p>
+</section>
+</main>
+
+<footer><span>© 2026 PLAYKISH</span><span>BUILT TO PERFORM. MADE TO MOVE.</span></footer>
+
+<script>
+let quantity=1;
+let selectedSize="";
+const quantityOutput=document.getElementById("quantity");
+const message=document.getElementById("message");
+
+document.querySelectorAll(".size").forEach(button=>{
+  button.addEventListener("click",()=>{
+    document.querySelectorAll(".size").forEach(item=>item.classList.remove("selected"));
+    button.classList.add("selected");
+    selectedSize=button.dataset.size;
+    document.getElementById("selectedSize").textContent=selectedSize;
+    message.textContent="";
+  });
+});
+
+document.getElementById("minus").addEventListener("click",()=>{
+  quantity=Math.max(1,quantity-1);
+  quantityOutput.textContent=quantity;
+});
+document.getElementById("plus").addEventListener("click",()=>{
+  quantity=Math.min(10,quantity+1);
+  quantityOutput.textContent=quantity;
+});
+document.getElementById("add").addEventListener("click",()=>{
+  if(!selectedSize){
+    message.textContent="Choose a size first.";
+    return;
+  }
+  message.textContent="Demo only: "+quantity+" APEX TEE ("+selectedSize+") selected. Checkout is not connected.";
+});
+</script>
+</body>
+</html>
