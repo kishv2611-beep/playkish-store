@@ -143,7 +143,51 @@ document.getElementById("plus").addEventListener("click",()=>{
   quantity=Math.min(10,quantity+1);
   quantityOutput.textContent=quantity;
 });
+
 document.getElementById("add").addEventListener("click",()=>{
+  if(!selectedSize){
+    message.textContent="Choose a size first.";
+    return;
+  }
+
+  const cartKey="playkishCart";
+  let cart=[];
+
+  try {
+    cart=JSON.parse(localStorage.getItem(cartKey)||"[]");
+    if(!Array.isArray(cart)) cart=[];
+  } catch {
+    cart=[];
+  }
+
+  const product={
+    name:"PLAYKISH APEX PERFORMANCE TEE",
+    size:selectedSize,
+    price:1499,
+    quantity:quantity
+  };
+
+  const existing=cart.find(item=>
+    item.name===product.name && item.size===product.size
+  );
+
+  if(existing){
+    existing.quantity=Math.min(
+      99,
+      Number(existing.quantity||0)+quantity
+    );
+  } else {
+    cart.push(product);
+  }
+
+  localStorage.setItem(cartKey,JSON.stringify(cart));
+  message.textContent="Added to your demo cart!";
+
+  setTimeout(()=>{
+    window.location.href="cart.html";
+  },700);
+});
+
   if(!selectedSize){
     message.textContent="Choose a size first.";
     return;
